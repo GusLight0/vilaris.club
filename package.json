@@ -1,0 +1,28 @@
+{
+  "name": "velaris-website",
+  "version": "1.0.0",
+  "description": "Premium luxury eyewear website - Velaris. Beach aesthetic, minimalismo sofisticado",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "build": "echo 'Build process would go here'",
+    "test": "echo 'Testing would go here'"
+  },
+  "keywords": [
+    "velaris",
+    "eyewear",
+    "luxury",
+    "premium",
+    "beach",
+    "aesthetic",
+    "minimalismo"
+  ],
+  "author": "Velaris Team",
+  "license": "Proprietary",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/velaris/website"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V e l a r i s</title>
+    <link rel="shortcut icon" href="./assets/icons/logo-site-circle.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="alinhamento">
+                <div class="logo">
+                    <img src="./assets/icons/logo-site-circle.png" alt="Logo da Velaris" width="64">
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-search-container">
+                    <i class="fas fa-search search-icon-inside"></i>
+                    <input type="text" id="searchInput" class="nav-search-input" placeholder="O que você procura?">
+                </div>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#colecoes" class="nav-link">Coleções</a>
+                <a href="#produtos" class="nav-link">Produtos</a>
+                <a href="pages/sobre.html" class="nav-link">Sobre</a>
+                <a href="pages/contato.html" class="nav-link">Contato</a>
+                <a href="#cart" class="nav-link cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-kicker">Velaris Club</p>
+            <h1 class="hero-title">
+                <span>Estilo que acompanha</span>
+                <span class="hero-title-accent">o verão</span>
+            </h1>
+            <p class="hero-subtitle">Elegância em cada detalhe. Minimalismo sofisticado para todos os momentos.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('produtos')">Explorar Coleção</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('colecoes')">Ver Catálogo</button>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="gradient-overlay"></div>
+            <video autoplay muted loop class="hero-video">
+                <source src="./assets/videos/hero-background.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- Coleções -->
+    <section id="colecoes" class="colecoes">
+        <div class="container">
+            <h2 class="section-title">Coleções Premium</h2>
+            <p class="section-subtitle">Descubra as nossas coleções exclusivas</p>
+            
+            <div class="colecoes-grid">
+
+                <div class="colecao-card" data-colecao="ocean">
+                    <div class="colecao-image">
+                        <img src="./assets/images/insta-2.jpg" alt="Ocean Collection">
+                        <div class="colecao-overlay">
+                            <h3>Ocean Collection</h3>
+                            <p>Tons oceânicos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="colecao-card" data-colecao="premium">
+                    <div class="colecao-image">
+                        <img src="./assets/images/insta-3.jpg" alt="Premium Edition">
+                        <div class="colecao-overlay">
+                            <h3>Premium Edition</h3>
+                            <p>Exclusividade absoluta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="colecao-card" data-colecao="sunset">
+                    <div class="colecao-image">
+                        <img src="./assets/images/insta-4.jpg" alt="Sunset Collection">
+                        <div class="colecao-overlay">
+                            <h3>Sunset Collection</h3>
+                            <p>Atardecer elegante</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="colecao-card" data-colecao="classic">
+                    <div class="colecao-image">
+                        <img src="./assets/images/insta-5.jpg" alt="Classic Collection">
+                        <div class="colecao-overlay">
+                            <h3>Classic Collection</h3>
+                            <p>Atemporalidade sofisticada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="colecao-card" data-colecao="resort">
+                    <div class="colecao-image">
+                        <img src="./assets/images/insta-6.jpg" alt="Resort Collection">
+                        <div class="colecao-overlay">
+                            <h3>Resort Aesthetic</h3>
+                            <p>Lifestyle premium</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros e Produtos -->
+    <section id="produtos" class="produtos">
+        <div class="container">
+            <h2 class="section-title">Produtos em Destaque</h2>
+            
+            <div class="filtros-wrapper">
+                <button class="filtros-toggle" id="filterToggle">
+                    <i class="fas fa-sliders-h"></i> <span>Filtrar Modelos</span>
+                </button>
+                <div class="filtros-container" id="filterMenu">
+                    <button class="filtro-btn active" data-filtro="todos">Todos</button>
+                    <button class="filtro-btn" data-filtro="destaque">Destaque</button>
+                    <button class="filtro-btn" data-filtro="promocao">Promoção</button>
+                </div>
+            </div>
+
+            <div class="produtos-grid">
+                <!-- Produto 1 -->
+                <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-1')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-2.jpg" alt="Ocean Black">
+                        <span class="badge destaque">Destaque</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Ocean Black', 129.90)">
+                                <i class="fas fa-shopping-bag"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Ocean Black</h3>
+                        <p class="descricao">Design minimalista com lentes oceanográficas</p>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 129,90</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="produto-card" data-filtro="promocao" onclick="abrirPaginaProduto('produto-2')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-3.jpg" alt="Sunset Premium">
+                        <span class="badge promocao">-20%</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Sunset Premium', 149.90)">
+                                <i class="fas fa-shopping-bag"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Sunset Premium</h3>
+                        <p class="descricao">Lentes gradiente sunset com proteção UV</p>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 149,90</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensagem de busca vazia -->
+            <div id="noResults" class="no-results hidden">
+                <i class="fas fa-search"></i>
+                <h3>Nenhum modelo encontrado com esses critérios.</h3>
+                <p>Tente ajustar sua busca ou mudar o filtro de categoria.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Lifestyle -->
+    <section class="lifestyle">
+        <div class="container">
+            <h2 class="section-title">Lifestyle Editorial</h2>
+            <p class="section-subtitle">Descubra o universo Velaris</p>
+            
+            <div class="lifestyle-grid">
+                <div class="lifestyle-item lifestyle-featured">
+                    <img src="./assets/images/beach-club.jpg" alt="Beach Club Aesthetic">
+                    <div class="lifestyle-text">
+                        <h3>Beach Club Aesthetic</h3>
+                        <p>Sofisticação à beira do mar</p>
+                    </div>
+                </div>
+
+                <div class="lifestyle-item">
+                    <img src="./assets/images/sunset-moments.jpg" alt="Sunset Moments">
+                    <div class="lifestyle-text">
+                        <h3>Sunset Moments</h3>
+                        <p>Elegância cinematográfica</p>
+                    </div>
+                </div>
+
+                <div class="lifestyle-item">
+                    <img src="./assets/images/resort-luxury.jpg" alt="Resort Luxury">
+                    <div class="lifestyle-text">
+                        <h3>Resort Luxury</h3>
+                        <p>Premium lifestyle</p>
+                    </div>
+                </div>
+
+                <div class="lifestyle-item">
+                    <img src="./assets/images/fashion-forward.jpg" alt="Fashion Forward">
+                    <div class="lifestyle-text">
+                        <h3>Fashion Forward</h3>
+                        <p>Tendência minimalista</p>
+                    </div>
+                </div>
+
+                <div class="lifestyle-item">
+                    <img src="./assets/icons/logo-site.JPG" alt="Logo da nossa marca">
+                    <div class="lifestyle-text">
+                        <h3>Nossa Empresa</h3>
+                        <p>Evolução constante</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram-section">
+        <div class="container">
+            <h2 class="section-title">@velaris.club</h2>
+            <p class="section-subtitle">Siga nossa inspiração diária</p>
+            
+            <div class="instagram-grid">
+                <a href="https://instagram.com/velaris.club" target="_blank" class="instagram-item">
+                    <img src="./assets/images/insta-1.jpg" alt="Instagram post 1">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="https://instagram.com/velaris.club" target="_blank" class="instagram-item">
+                    <img src="./assets/images/insta-2.jpg" alt="Instagram post 2">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="https://instagram.com/velaris.club" target="_blank" class="instagram-item">
+                    <img src="./assets/images/insta-3.jpg" alt="Instagram post 3">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="https://instagram.com/velaris.club" target="_blank" class="instagram-item">
+                    <img src="./assets/images/insta-4.jpg" alt="Instagram post 4">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="https://instagram.com/velaris.club" target="_blank" class="instagram-item">
+                    <img src="./assets/images/insta-5.jpg" alt="Instagram post 5">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+                <a href="https://instagram.com/velaris.club" target="_blank" class="instagram-item">
+                    <img src="./assets/images/insta-6.jpg" alt="Instagram post 6">
+                    <div class="instagram-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="insta-button">
+                <a href="https://instagram.com/velaris.club" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-instagram"></i> Siga-nos no Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-header">
+                <h2 class="section-title">Dúvidas Frequentes</h2>
+                <p class="section-subtitle">Tudo o que você precisa saber sobre a experiência Velaris</p>
+            </div>
+            
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Qual é o tempo de entrega?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Todos os produtos funcionam em modelo de pronta entrega com delivery local rápido. Informações específicas podem ser consultadas via WhatsApp.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Os óculos possuem proteção UV?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim, todos os óculos Velaris possuem proteção UV 100% contra raios UVA e UVB, garantindo máxima proteção ocular e conforto visual.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>É possível devolver os produtos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim, temos política de devolução. Para mais informações sobre prazos e condições, entre em contato conosco diretamente via WhatsApp.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Vocês entregam em outras cidades?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Atualmente, focamos em delivery local para garantir rapidez. No entanto, consulte-nos via WhatsApp para verificarmos a viabilidade de envio para sua região.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quais formas de pagamento são aceitas?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Aceitamos as principais formas de pagamento, incluindo PIX, cartões de crédito e débito. Os detalhes finais são combinados diretamente com nosso atendimento especializado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Seu Carrinho</h2>
+                <button class="close-cart">&times;</button>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Seu carrinho está vazio</p>
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+                <div class="summary-row">
+                    <strong>Total:</strong>
+                    <strong id="total">R$ 0,00</strong>
+                </div>
+            </div>
+
+            <textarea id="observacoes" class="observacoes" placeholder="Deixe suas observações ou preferências..."></textarea>
+
+            <button class="btn btn-primary full-width" onclick="finalizarCompra()">
+                <i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Produto -->
+    <div id="productDetailModal" class="product-modal"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VELARIS</h3>
+                    <p>Luxury beach eyewear para um lifestyle premium.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/velaris.club" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/5598970216233" target="_blank" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#colecoes">Coleções</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="pages/sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5598970216233" target="_blank">
+                            <i class="fab fa-whatsapp"></i> +55 98 97021-6233
+                        </a></li>
+                        <li><a href="https://instagram.com/velaris.club" target="_blank">
+                            <i class="fab fa-instagram"></i> @velaris.club
+                        </a></li>
+                        <li><a href="pages/contato.html">Formulário de Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Informações</h4>
+                    <ul>
+                        <li>Pronta Entrega</li>
+                        <li>Delivery Local</li>
+                        <li>Proteção UV 100%</li>
+                        <li>Qualidade Premium</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Velaris - Luxury Beach Eyewear. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5598970216233?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Velaris." 
+       target="_blank" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - Velaris</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-detail {
+            margin-top: 70px;
+            padding: 3rem 0;
+        }
+
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            aspect-ratio: 1;
+            background: var(--light-gray);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            border-color: var(--primary);
+        }
+
+        .thumbnail.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary);
+        }
+
+        .product-info-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .product-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+        }
+
+        .product-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            color: var(--primary);
+        }
+
+        .product-collection {
+            font-size: 0.9rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 0.95rem;
+        }
+
+        .rating-count {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .product-features {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+        }
+
+        .features-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .product-options {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            background: var(--light-gray);
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .option-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .option-btn {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid var(--border);
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .option-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+            width: fit-content;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        .qty-input {
+            border: none;
+            width: 60px;
+            text-align: center;
+            font-weight: 600;
+            background: none;
+            outline: none;
+        }
+
+        .product-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .product-actions .btn {
+            min-height: 50px;
+            font-size: 0.95rem;
+        }
+
+        .related-products {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .related-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-card img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .related-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .related-card p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .product-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnail-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-detail {
+                padding: 1.5rem 0;
+            }
+
+            .product-detail-container {
+                padding: 0 1rem;
+                gap: 1.5rem;
+            }
+
+            .product-header h1 {
+                font-size: 1.3rem;
+            }
+
+            .product-price {
+                font-size: 1.5rem;
+            }
+
+            .thumbnail-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-options {
+                padding: 1.5rem;
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>VELARIS</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#colecoes" class="nav-link">Coleções</a>
+                <a href="../index.html#produtos" class="nav-link">Produtos</a>
+                <a href="sobre.html" class="nav-link">Sobre</a>
+                <a href="contato.html" class="nav-link">Contato</a>
+                <a href="../index.html#cart" class="nav-link cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail -->
+    <div class="product-detail">
+        <div class="product-detail-container">
+            <!-- Gallery -->
+            <div class="product-gallery">
+                <a href="../index.html#produtos" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </a>
+
+                <div class="main-image">
+                    <img id="mainImage" src="https://picsum.photos/400/533?random=1" alt="Produto">
+                </div>
+
+                <div class="thumbnail-gallery">
+                    <div class="thumbnail active" onclick="changeImage(this)">
+                        <img src="https://picsum.photos/400/533?random=1" alt="View 1">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this)">
+                        <img src="https://picsum.photos/400/533?random=2" alt="View 2">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this)">
+                        <img src="https://picsum.photos/400/533?random=3" alt="View 3">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this)">
+                        <img src="https://picsum.photos/400/533?random=4" alt="View 4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info-detail">
+                <div class="product-header">
+                    <div class="product-collection" id="collection">Summer Collection</div>
+                    <h1 id="productTitle">Óculos Ocean Black</h1>
+                    
+                    <div class="product-rating">
+                        <span class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                        <span class="rating-count">(128 avaliações)</span>
+                    </div>
+
+                    <div class="product-price" id="productPrice">R$ 129,90</div>
+                    <div class="product-description">
+                        <p id="productDesc">Design minimalista com lentes oceânicas premium. Proteção UV 100% contra raios UVA e UVB. Acabamento sofisticado com armação elegante.</p>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="product-features">
+                    <div class="features-title">Características</div>
+                    <ul class="features-list">
+                        <li>Lentes oceânicas premium</li>
+                        <li>Proteção UV 100%</li>
+                        <li>Armação minimalista</li>
+                        <li>Peso ultra-leve</li>
+                        <li>Acabamento sofisticado</li>
+                        <li>Pronta entrega</li>
+                    </ul>
+                </div>
+
+                <!-- Options & Purchase -->
+                <div class="product-options">
+                    <div class="option-group">
+                        <label class="option-label">Tamanho</label>
+                        <div class="option-buttons">
+                            <button class="option-btn active">P</button>
+                            <button class="option-btn">M</button>
+                            <button class="option-btn">G</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label class="option-label">Cor</label>
+                        <div class="option-buttons">
+                            <button class="option-btn active">Preto</button>
+                            <button class="option-btn">Azul</button>
+                            <button class="option-btn">Marrom</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label class="option-label">Quantidade</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" onclick="decreaseQty()">−</button>
+                            <input type="number" class="qty-input" id="quantity" value="1" min="1" readonly>
+                            <button class="qty-btn" onclick="increaseQty()">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn btn-primary" onclick="addToCart('Óculos Ocean Black', 129.90)">
+                            <i class="fas fa-shopping-bag"></i> Adicionar ao Carrinho
+                        </button>
+                        <button class="btn btn-secondary" onclick="window.open('https://wa.me/5598970216233?text=Olá! Gostaria de mais informações sobre este produto')">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div style="border-top: 1px solid var(--border); padding-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Garantia e Políticas</h3>
+                    <ul style="list-style: none; color: #666; line-height: 1.8;">
+                        <li><strong>Garantia:</strong> 12 meses contra defeitos</li>
+                        <li><strong>Devolução:</strong> 30 dias de garantia</li>
+                        <li><strong>Entrega:</strong> Delivery local rápido</li>
+                        <li><strong>Embalagem:</strong> Premium com estojo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-products container">
+            <h2 class="related-title">Produtos Relacionados</h2>
+            <div class="related-grid">
+                <div class="related-card" onclick="goToProduct('Sunset Premium', 149.90, 2)">
+                    <img src="https://picsum.photos/300/400?random=5" alt="Sunset Premium">
+                    <h3>Sunset Premium</h3>
+                    <p>R$ 149,90</p>
+                </div>
+                <div class="related-card" onclick="goToProduct('Areia Sofisticada', 139.90, 3)">
+                    <img src="https://picsum.photos/300/400?random=6" alt="Areia Sofisticada">
+                    <h3>Areia Sofisticada</h3>
+                    <p>R$ 139,90</p>
+                </div>
+                <div class="related-card" onclick="goToProduct('Marítimo Clean', 119.90, 4)">
+                    <img src="https://picsum.photos/300/400?random=7" alt="Marítimo Clean">
+                    <h3>Marítimo Clean</h3>
+                    <p>R$ 119,90</p>
+                </div>
+                <div class="related-card" onclick="goToProduct('Luxe Azul', 159.90, 5)">
+                    <img src="https://picsum.photos/300/400?random=8" alt="Luxe Azul">
+                    <h3>Luxe Azul</h3>
+                    <p>R$ 159,90</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VELARIS</h3>
+                    <p>Luxury beach eyewear para um lifestyle premium.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/velaris.club" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/5598970216233" target="_blank" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#colecoes">Coleções</a></li>
+                        <li><a href="../index.html#produtos">Produtos</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5598970216233" target="_blank">
+                            <i class="fab fa-whatsapp"></i> +55 98 97021-6233
+                        </a></li>
+                        <li><a href="https://instagram.com/velaris.club" target="_blank">
+                            <i class="fab fa-instagram"></i> @velaris.club
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Informações</h4>
+                    <ul>
+                        <li>Pronta Entrega</li>
+                        <li>Delivery Local</li>
+                        <li>Proteção UV 100%</li>
+                        <li>Qualidade Premium</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Velaris - Luxury Beach Eyewear. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5598970216233" target="_blank" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Get product data from URL
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id') || 1;
+        
+        // Product data
+        const products = {
+            1: {
+                title: 'Óculos Ocean Black',
+                collection: 'Summer Collection',
+                price: 129.90,
+                desc: 'Design minimalista com lentes oceânicas premium. Proteção UV 100% contra raios UVA e UVB. Acabamento sofisticado com armação elegante.',
+                image: 'https://picsum.photos/400/533?random=1'
+            },
+            2: {
+                title: 'Óculos Sunset Premium',
+                collection: 'Sunset Collection',
+                price: 149.90,
+                desc: 'Lentes gradiente sunset com proteção UV máxima. Estética cinematográfica sofisticada. Acabamento premium com detalhes elegantes.',
+                image: 'https://picsum.photos/400/533?random=5'
+            },
+            3: {
+                title: 'Óculos Areia Sofisticada',
+                collection: 'Classic Collection',
+                price: 139.90,
+                desc: 'Tons neutros com design elegante e atemporal. Minimalismo puro para todos os momentos. Qualidade premium garantida.',
+                image: 'https://picsum.photos/400/533?random=6'
+            },
+            4: {
+                title: 'Óculos Marítimo Clean',
+                collection: 'Ocean Collection',
+                price: 119.90,
+                desc: 'Minimalismo puro com acabamento premium. Design clean e sofisticado. Perfeito para o dia a dia.',
+                image: 'https://picsum.photos/400/533?random=7'
+            },
+            5: {
+                title: 'Óculos Luxe Azul',
+                collection: 'Premium Edition',
+                price: 159.90,
+                desc: 'Azul marinho profundo com detalhes sofisticados. Exclusividade absoluta. Acabamento impecável.',
+                image: 'https://picsum.photos/400/533?random=8'
+            }
+        };
+
+        const product = products[productId];
+        
+        if (product) {
+            document.getElementById('productTitle').textContent = product.title;
+            document.getElementById('collection').textContent = product.collection;
+            document.getElementById('productPrice').textContent = `R$ ${product.price.toFixed(2)}`;
+            document.getElementById('productDesc').textContent = product.desc;
+            document.getElementById('mainImage').src = product.image;
+        }
+
+        function changeImage(element) {
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('mainImage').src = element.querySelector('img').src;
+        }
+
+        function increaseQty() {
+            const qty = document.getElementById('quantity');
+            qty.value = parseInt(qty.value) + 1;
+        }
+
+        function decreaseQty() {
+            const qty = document.getElementById('quantity');
+            if (parseInt(qty.value) > 1) {
+                qty.value = parseInt(qty.value) - 1;
+            }
+        }
+
+        function addToCart(name, price) {
+            const qty = parseInt(document.getElementById('quantity').value);
+            for (let i = 0; i < qty; i++) {
+                adicionarAoCarrinho(name, price);
+            }
+        }
+
+        function goToProduct(name, price, id) {
+            window.location.href = `product-detail.html?id=${id}`;
+        }
+    </script>
+</body>
+</html>
