@@ -10,6 +10,8 @@
     --accent: #0066cc;
     --sand: #c9b8a8;
     --ocean: #1a4d7a;
+    --sea-glass: #9ed7df;
+    --champagne: #ead8bf;
     --white: #ffffff;
     --light-gray: #f9f8f6;
     --dark-gray: #2a2a2a;
@@ -41,10 +43,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
     font-size: clamp(2rem, 4.5vw, 3rem);
-    margin-bottom: 0.5rem;
+    margin: 1.5rem 0 0.8rem;
     color: var(--primary);
-    font-weight: 200;
-    letter-spacing: 0.04em;
+    font-family: 'Bodoni 72', Didot, Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: 0;
     line-height: 1.08;
     text-wrap: balance;
     animation: fadeInUp 0.8s ease-out;
@@ -204,6 +207,16 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.1rem;
 }
 
+.mobile-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.mobile-cart-icon {
+    display: none;
+}
+
 .cart-count {
     position: absolute;
     top: -8px;
@@ -296,8 +309,8 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 2;
     color: var(--white);
     width: 100%;
-    max-width: 1400px;
-    padding: 0 2rem 0 4rem;
+    max-width: 1320px;
+    padding: 0 2rem 0 4.5rem;
     animation: fadeInUp 1s ease-out;
 }
 
@@ -318,9 +331,9 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 0.9rem;
     margin-bottom: 1.25rem;
-    color: #8fd3ff;
+    color: var(--champagne);
     font-size: 0.82rem;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0;
     text-shadow: 0 3px 14px rgba(0, 0, 0, 0.55);
@@ -335,14 +348,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-    max-width: 1060px;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 5.8rem;
-    margin-bottom: 1.35rem;
-    font-weight: 800;
+    max-width: 980px;
+    font-family: 'Bodoni 72', Didot, Georgia, 'Times New Roman', serif;
+    font-size: clamp(3.6rem, 8.8vw, 7rem);
+    margin-bottom: 1.45rem;
+    font-weight: 400;
     letter-spacing: 0;
-    line-height: 0.92;
-    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    line-height: 0.96;
+    text-wrap: balance;
+    text-shadow: 0 14px 42px rgba(0, 0, 0, 0.52);
 }
 
 .hero-title span {
@@ -350,19 +364,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title-accent {
-    color: #8fd3ff;
+    color: #c4edf2;
     font-style: italic;
-    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.68);
+    font-weight: 400;
+    text-shadow: 0 12px 36px rgba(0, 0, 0, 0.62);
 }
 
 .hero-subtitle {
     max-width: 610px;
-    font-size: 1.28rem;
+    font-size: clamp(1.02rem, 1.5vw, 1.22rem);
     margin-bottom: 2.6rem;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0;
-    line-height: 1.55;
-    color: rgba(255, 255, 255, 0.94);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.9);
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.72);
 }
 
@@ -513,8 +528,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Novo Sistema de Filtros */
 .filtros-wrapper {
-    text-align: center;
-    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    text-align: left;
+    margin-bottom: 1.5rem;
     animation: fadeInUp 0.8s ease-out;
 }
 
@@ -529,6 +548,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    flex: 0 0 auto;
     transition: var(--transition);
     border-radius: 30px;
     color: var(--primary);
@@ -549,21 +569,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .filtros-container {
-    max-height: 0;
+    width: auto;
+    min-width: 0;
+    max-width: 0;
+    max-height: 56px;
     opacity: 0;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    transition: max-width 0.42s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.24s ease;
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: flex-start;
+    gap: 0.75rem;
     padding-top: 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .filtros-container.active {
-    max-height: 150px;
+    max-width: 520px;
     opacity: 1;
-    padding-top: 1.5rem;
+    pointer-events: auto;
 }
 
 .filtro-btn {
@@ -597,6 +621,16 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 0 0 3px rgba(0, 26, 51, 0.1);
 }
 
+.produtos {
+    padding: clamp(4rem, 8vw, 6.5rem) 0;
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f7fbfb 48%, #ffffff 100%);
+}
+
+.produtos .section-title {
+    margin-top: 0;
+}
+
 .produtos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
@@ -610,10 +644,10 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    background: var(--white);
-    border: 1px solid rgba(232, 227, 221, 0.9);
+    background: linear-gradient(180deg, var(--white), #fbfdfd);
+    border: 1px solid rgba(0, 26, 51, 0.08);
     border-radius: 8px;
-    box-shadow: 0 18px 42px rgba(0, 26, 51, 0.07);
+    box-shadow: 0 20px 50px rgba(0, 26, 51, 0.07);
     transition: var(--transition);
 }
 
@@ -1014,9 +1048,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .lifestyle-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
-    grid-auto-rows: 300px;
+    grid-auto-rows: minmax(280px, auto);
 }
 
 .lifestyle-item {
@@ -1043,10 +1077,12 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+    backdrop-filter: blur(2px);
     color: var(--white);
-    padding: 2rem 1.5rem 1.5rem;
+    padding: 3rem 1.5rem 1.5rem;
     text-align: left;
+    transition: var(--transition);
 }
 
 .lifestyle-text h3 {
@@ -1470,11 +1506,11 @@ h1, h2, h3, h4, h5, h6 {
 /* Responsive */
 @media (max-width: 1024px) {
     .hero-title {
-        font-size: 4.6rem;
+        font-size: clamp(3.7rem, 8.4vw, 5.8rem);
     }
 
     .hero-subtitle {
-        font-size: 1.18rem;
+        font-size: 1.12rem;
     }
 }
 
@@ -1482,7 +1518,34 @@ h1, h2, h3, h4, h5, h6 {
     .hamburger {
         display: flex;
         order: 2;
+        flex: 0 0 auto;
         margin: 0;
+    }
+
+    .mobile-nav-actions {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .mobile-cart-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        color: var(--primary);
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        text-decoration: none;
+    }
+
+    .mobile-cart-icon::after {
+        display: none;
+    }
+
+    .desktop-cart-icon {
+        display: none;
     }
 
     .container {
@@ -1550,7 +1613,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-title {
-        font-size: 3.45rem;
+        font-size: clamp(3rem, 12vw, 4.25rem);
         line-height: 0.96;
     }
 
@@ -1570,8 +1633,29 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .colecoes-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
+        display: flex;
+        grid-template-columns: none;
+        gap: 0.9rem;
+        width: calc(100% + 2.5rem);
+        margin: 0 -1.25rem;
+        padding: 0 1.25rem 0.75rem;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-padding-inline: 1.25rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .colecoes-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .colecao-card {
+        flex: 0 0 clamp(260px, 78vw, 390px);
+        aspect-ratio: 16 / 11;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
     }
 
     .colecao-overlay {
@@ -1616,13 +1700,19 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .lifestyle-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        grid-auto-rows: 150px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 250px;
+        gap: 1rem;
     }
 
     .lifestyle-featured {
-        grid-column: span 1;
-        grid-row: span 1;
+        grid-column: span 2;
+        grid-row: span 2;
+        height: 400px;
+    }
+
+    .lifestyle-text h3 {
+        font-size: 1.2rem;
     }
 
     .cart-modal {
@@ -1633,6 +1723,28 @@ h1, h2, h3, h4, h5, h6 {
     .search-box {
         width: 100%;
         grid-column: 1 / -1;
+    }
+
+    .filtros-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        margin-bottom: 1rem;
+    }
+
+    .filtros-container {
+        width: 100%;
+        max-width: 100%;
+        max-height: 0;
+        transition: max-height 0.36s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.24s ease, padding-top 0.24s ease;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+    }
+
+    .filtros-container.active {
+        max-width: 100%;
+        max-height: 180px;
+        padding-top: 1rem;
     }
 
     .filtros {
@@ -1677,9 +1789,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 560px) {
-    .colecoes-grid,
     .produtos-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .colecao-card {
@@ -1737,7 +1848,7 @@ h1, h2, h3, h4, h5, h6 {
     .alinhamento {
         display: flex;
         align-items: center;
-        width: 90%;
+        width: 100%;
         justify-content: space-between;
     }
 
@@ -1804,6 +1915,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
+    .lifestyle-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 320px;
+    }
+
+    .lifestyle-featured {
+        grid-column: span 1;
+        grid-row: span 1;
+        height: 320px;
+    }
+
+    .lifestyle-text {
+        padding: 2rem 1.25rem 1.25rem;
+    }
+
     .hero {
         min-height: 500px;
         padding-bottom: 3rem;
@@ -1819,7 +1945,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-title {
-        font-size: 2.65rem;
+        font-size: clamp(2.65rem, 13vw, 3.4rem);
     }
 
     .section-title {
@@ -1844,14 +1970,35 @@ h1, h2, h3, h4, h5, h6 {
         gap: 1rem;
     }
 
-    .colecoes-grid {
-        grid-template-columns: 1fr;
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
 
-    .produtos-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .produto-hover {
+        justify-content: flex-end; /* Alinha o botão à direita */
+        padding: 0.6rem;
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    }
+
+    .btn-add-cart {
+        width: 35px;
+        height: 35px;
+        min-height: unset;
+        border-radius: 50%; /* Transforma em círculo */
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn-add-cart span {
+        display: none; /* Esconde o texto "Adicionar" */
+    }
+
+    .btn-add-cart i::before {
+        content: "\f067"; /* Troca o ícone de sacola pelo ícone de "+" */
     }
 
     .filtros {
@@ -1885,4 +2032,10 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     height: 0;
     overflow: hidden;
+}
+
+@media (max-width: 380px) {
+    .preco {
+        font-size: 1rem;
+    }
 }

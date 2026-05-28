@@ -16,10 +16,16 @@
                 <div class="logo">
                     <img src="./assets/icons/logo-site-circle.png" alt="Logo da Velaris" width="64">
                 </div>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="mobile-nav-actions">
+                    <a href="#cart" class="nav-link cart-icon mobile-cart-icon" aria-label="Abrir carrinho">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
             <div class="nav-menu">
@@ -28,11 +34,11 @@
                     <input type="text" id="searchInput" class="nav-search-input" placeholder="O que você procura?">
                 </div>
                 <a href="#home" class="nav-link">Home</a>
-                <a href="#colecoes" class="nav-link">Coleções</a>
                 <a href="#produtos" class="nav-link">Produtos</a>
+                <a href="#colecoes" class="nav-link">Coleções</a>
                 <a href="pages/sobre.html" class="nav-link">Sobre</a>
                 <a href="pages/contato.html" class="nav-link">Contato</a>
-                <a href="#cart" class="nav-link cart-icon">
+                <a href="#cart" class="nav-link cart-icon desktop-cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
                 </a>
@@ -50,8 +56,8 @@
             </h1>
             <p class="hero-subtitle">Elegância em cada detalhe. Minimalismo sofisticado para todos os momentos.</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="scrollToSection('produtos')">Explorar Coleção</button>
-                <button class="btn btn-secondary" onclick="scrollToSection('colecoes')">Ver Catálogo</button>
+                <button class="btn btn-primary" onclick="scrollToSection('colecoes')">Explorar Coleção</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('produtos')">Ver Catálogo</button>
             </div>
         </div>
         <div class="hero-background">
@@ -62,12 +68,158 @@
         </div>
     </section>
 
+    <!-- Filtros e Produtos -->
+    <section id="produtos" class="produtos">
+        <div class="container">
+            <h2 class="section-title">Produtos em Destaque</h2>
+
+            <div class="filtros-wrapper">
+                <button class="filtros-toggle" id="filterToggle">
+                    <i class="fas fa-sliders-h"></i> <span>Filtrar Modelos</span>
+                </button>
+                <div class="filtros-container" id="filterMenu">
+                    <button class="filtro-btn active" data-filtro="todos">Todos</button>
+                    <button class="filtro-btn" data-filtro="destaque">Destaque</button>
+                    <button class="filtro-btn" data-filtro="promocao">Promoção</button>
+                </div>
+            </div>
+
+            <div class="produtos-grid">
+                <!-- Produto 1 -->
+                <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-1')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-7.png" alt="Óculos Sunset Safari">
+                        <span class="badge destaque">Destaque</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Sunset Safari', 79.99)">
+                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Sunset Safari</h3>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 79,99</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="produto-card" data-filtro="promocao" onclick="abrirPaginaProduto('produto-2')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-3.jpg" alt="Óculos Midnight">
+                        <span class="badge promocao">-20%</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Midnight', 79.99)">
+                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Midnight</h3>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 79,99</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-3')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-6.jpg" alt="Óculos Yellow Sunset">
+                        <span class="badge destaque">Novo</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Yellow Sunset', 69.99)">
+                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Yellow Sunset</h3>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 69,99</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-4')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-5.jpg" alt="Óculos Breeze">
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Breeze', 74.99)">
+                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Breeze</h3>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 74,99</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 5 -->
+                <div class="produto-card" data-filtro="promocao" onclick="abrirPaginaProduto('produto-5')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-4.jpg" alt="Óculos Crystal Blue">
+                        <span class="badge promocao">-20%</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Blue', 69.99)">
+                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Crystal Blue</h3>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 69,99</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 6 -->
+                <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-6')">
+                    <div class="produto-image">
+                        <img src="./assets/images/insta-8.jpg" alt="Óculos Crystal Grey">
+                        <span class="badge destaque">Destaque</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Grey', 74.99)">
+                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Crystal Grey</h3>
+                        <div class="produto-footer">
+                            <span class="preco">R$ 74,99</span>
+                            <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensagem de busca vazia -->
+                <div id="noResults" class="no-results hidden">
+                    <i class="fas fa-search"></i>
+                    <h3>Nenhum modelo encontrado com esses critérios.</h3>
+                    <p>Tente ajustar sua busca ou mudar o filtro de categoria.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Coleções -->
     <section id="colecoes" class="colecoes">
         <div class="container">
             <h2 class="section-title">Coleções Premium</h2>
             <p class="section-subtitle">Descubra as nossas coleções exclusivas</p>
-            
+
             <div class="colecoes-grid">
 
                 <div class="colecao-card" data-colecao="ocean">
@@ -119,75 +271,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Filtros e Produtos -->
-    <section id="produtos" class="produtos">
-        <div class="container">
-            <h2 class="section-title">Produtos em Destaque</h2>
-            
-            <div class="filtros-wrapper">
-                <button class="filtros-toggle" id="filterToggle">
-                    <i class="fas fa-sliders-h"></i> <span>Filtrar Modelos</span>
-                </button>
-                <div class="filtros-container" id="filterMenu">
-                    <button class="filtro-btn active" data-filtro="todos">Todos</button>
-                    <button class="filtro-btn" data-filtro="destaque">Destaque</button>
-                    <button class="filtro-btn" data-filtro="promocao">Promoção</button>
-                </div>
-            </div>
-
-            <div class="produtos-grid">
-                <!-- Produto 1 -->
-                <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-1')">
-                    <div class="produto-image">
-                        <img src="./assets/images/insta-2.jpg" alt="Ocean Black">
-                        <span class="badge destaque">Destaque</span>
-                        <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Ocean Black', 129.90)">
-                                <i class="fas fa-shopping-bag"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="produto-info">
-                        <h3>Óculos Ocean Black</h3>
-                        <p class="descricao">Design minimalista com lentes oceanográficas</p>
-                        <div class="produto-footer">
-                            <span class="preco">R$ 129,90</span>
-                            <span class="badge-entrega">Pronta Entrega</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produto 2 -->
-                <div class="produto-card" data-filtro="promocao" onclick="abrirPaginaProduto('produto-2')">
-                    <div class="produto-image">
-                        <img src="./assets/images/insta-3.jpg" alt="Sunset Premium">
-                        <span class="badge promocao">-20%</span>
-                        <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Sunset Premium', 149.90)">
-                                <i class="fas fa-shopping-bag"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="produto-info">
-                        <h3>Óculos Sunset Premium</h3>
-                        <p class="descricao">Lentes gradiente sunset com proteção UV</p>
-                        <div class="produto-footer">
-                            <span class="preco">R$ 149,90</span>
-                            <span class="badge-entrega">Pronta Entrega</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mensagem de busca vazia -->
-            <div id="noResults" class="no-results hidden">
-                <i class="fas fa-search"></i>
-                <h3>Nenhum modelo encontrado com esses critérios.</h3>
-                <p>Tente ajustar sua busca ou mudar o filtro de categoria.</p>
             </div>
         </div>
     </section>
@@ -415,8 +498,8 @@
                     <h4>Links Rápidos</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#colecoes">Coleções</a></li>
                         <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#colecoes">Coleções</a></li>
                         <li><a href="pages/sobre.html">Sobre</a></li>
                     </ul>
                 </div>

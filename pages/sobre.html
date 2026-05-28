@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - Velaris</title>
+    <title>V e l a r i s</title>
     <link rel="shortcut icon" href="../assets/icons/logo-site-circle.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -32,7 +32,7 @@
         .about-hero h1 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: 0;
             margin-bottom: 1rem;
             text-transform: none;
             font-family: Georgia, serif;
@@ -113,6 +113,216 @@
                 padding: 2.5rem 1.5rem;
             }
         }
+
+        .about-hero {
+            min-height: 68vh;
+            align-items: flex-end;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 6rem 0;
+        }
+
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(90deg, rgba(0, 10, 20, 0.72) 0%, rgba(0, 26, 51, 0.42) 46%, rgba(0, 26, 51, 0.08) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 10, 20, 0.44) 100%);
+            pointer-events: none;
+        }
+
+        .about-hero-content {
+            width: min(1120px, calc(100% - 3rem));
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .about-kicker,
+        .about-section-kicker {
+            color: var(--champagne);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .about-hero h1 {
+            max-width: 780px;
+            font-family: 'Bodoni 72', Didot, Georgia, 'Times New Roman', serif;
+            font-size: clamp(3.2rem, 8vw, 6.8rem);
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: 0.96;
+            margin-bottom: 1.3rem;
+            text-wrap: balance;
+        }
+
+        .about-hero p:not(.about-kicker) {
+            max-width: 620px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1.02rem, 1.8vw, 1.28rem);
+            line-height: 1.7;
+        }
+
+        .about-page {
+            background: linear-gradient(180deg, #ffffff 0%, var(--light-gray) 48%, #ffffff 100%);
+        }
+
+        .about-intro,
+        .about-editorial,
+        .about-values {
+            padding: clamp(4rem, 8vw, 7rem) 0;
+        }
+
+        .about-intro-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+            gap: clamp(2rem, 6vw, 6rem);
+            align-items: start;
+        }
+
+        .about-lede {
+            font-family: 'Bodoni 72', Didot, Georgia, 'Times New Roman', serif;
+            font-size: clamp(2rem, 4.8vw, 4rem);
+            font-weight: 400;
+            line-height: 1.05;
+            color: var(--primary);
+            letter-spacing: 0;
+            text-wrap: balance;
+        }
+
+        .about-copy {
+            color: #56616b;
+            font-size: 1.04rem;
+            line-height: 1.9;
+        }
+
+        .about-copy p + p {
+            margin-top: 1.2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .about-stat strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1.55rem;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
+
+        .about-stat span {
+            color: #6f777d;
+            font-size: 0.85rem;
+        }
+
+        .about-editorial {
+            background: #f4f8f8;
+        }
+
+        .about-editorial-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+            gap: clamp(2rem, 6vw, 5rem);
+            align-items: center;
+        }
+
+        .about-editorial-img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 24px 70px rgba(0, 26, 51, 0.12);
+            filter: saturate(1.04) contrast(1.04);
+        }
+
+        .about-editorial-text h2,
+        .about-values h2 {
+            max-width: 680px;
+            font-family: 'Bodoni 72', Didot, Georgia, 'Times New Roman', serif;
+            font-size: clamp(2rem, 4vw, 3.7rem);
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: 1.08;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            text-wrap: balance;
+        }
+
+        .about-editorial-text p {
+            color: #56616b;
+            font-size: 1.02rem;
+            line-height: 1.85;
+        }
+
+        .about-signature {
+            margin-top: 2rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid rgba(0, 26, 51, 0.14);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .values-editorial {
+            gap: clamp(1rem, 2vw, 2rem);
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            border-top: 1px solid var(--border);
+            padding-top: 1.4rem;
+        }
+
+        .value-number {
+            display: block;
+            color: var(--sand);
+            font-family: 'Bodoni 72', Didot, Georgia, 'Times New Roman', serif;
+            font-size: 2.2rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .value-item h3 {
+            font-size: 1.08rem;
+            font-weight: 650;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0;
+        }
+
+        .value-item p {
+            color: #667078;
+            line-height: 1.75;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                min-height: 560px;
+                padding: 4rem 0;
+            }
+
+            .about-intro-grid,
+            .about-editorial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about-editorial-img {
+                aspect-ratio: 16 / 11;
+            }
+        }
     </style>
 </head>
 <body>
@@ -123,23 +333,25 @@
                 <div class="logo">
                     <img src="../assets/icons/logo-site-circle.png" alt="Logo Velaris" width="64">
                 </div>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="mobile-nav-actions">
+                    <a href="../index.html#cart" class="nav-link cart-icon mobile-cart-icon" aria-label="Abrir carrinho">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
             <div class="nav-menu">
-                <div class="nav-search-container">
-                    <i class="fas fa-search search-icon-inside"></i>
-                    <input type="text" id="searchInput" class="nav-search-input" placeholder="O que você procura?">
-                </div>
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#colecoes" class="nav-link">Coleções</a>
                 <a href="../index.html#produtos" class="nav-link">Produtos</a>
+                <a href="../index.html#colecoes" class="nav-link">Coleções</a>
                 <a href="sobre.html" class="nav-link">Sobre</a>
                 <a href="contato.html" class="nav-link">Contato</a>
-                <a href="../index.html#cart" class="nav-link cart-icon">
+                <a href="../index.html#cart" class="nav-link cart-icon desktop-cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
                 </a>
@@ -150,8 +362,9 @@
     <!-- About Hero -->
     <div class="about-hero">
         <div class="about-hero-content">
+            <p class="about-kicker">Velaris Club</p>
             <h1>Nossa Essência</h1>
-            <p>Minimalismo sofisticado encontra o lifestyle beach luxury</p>
+            <p>Minimalismo sofisticado, luz de verão e uma curadoria feita para quem vive o litoral com presença.</p>
         </div>
         <div class="hero-background">
             <div class="gradient-overlay"></div>
@@ -162,40 +375,70 @@
     </div>
 
     <!-- About Content -->
-    <div class="about-container">
-        <div class="editorial-section">
-            <h2>Manifesto Velaris</h2>
-            <div class="editorial-text">
-                Velaris foi criada para quem entende que o luxo não grita, ele sussurra. Nossa missão é unir a precisão do design contemporâneo à fluidez da estética litorânea. Cada par de óculos é uma peça de design pensada para enquadrar não apenas o seu rosto, mas a sua visão de mundo.
+    <main class="about-page">
+        <section class="about-intro">
+            <div class="container about-intro-grid">
+                <div>
+                    <p class="about-section-kicker">Manifesto</p>
+                    <h2 class="about-lede">O luxo não precisa chamar atenção. Ele precisa permanecer.</h2>
+                </div>
+                <div class="about-copy">
+                    <p>Velaris foi criada para unir a precisão do design contemporâneo à fluidez da estética litorânea. Cada par de óculos é pensado para acompanhar dias de sol, encontros no fim de tarde e momentos em que o estilo precisa parecer natural.</p>
+                    <p>A marca nasce dessa combinação entre materiais bem escolhidos, linhas limpas e uma presença visual que conversa com praia, resort e cidade sem perder sofisticação.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <strong>UV 100%</strong>
+                            <span>proteção solar</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong>Pronta</strong>
+                            <span>entrega local</span>
+                        </div>
+                        <div class="about-stat">
+                            <strong>Premium</strong>
+                            <span>curadoria visual</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="editorial-grid">
-            <img src="../assets/images/insta-1.jpg" alt="Aesthetic" class="editorial-img">
-            <div class="editorial-text-small">
-                <h3 style="margin-bottom: 1rem; color: var(--primary);">Visão Cinematográfica</h3>
-                <p style="color: #666;">Inspirados pela luz do entardecer e pela composição de momentos atemporais, desenvolvemos uma marca que transcende o acessório. É sobre a confiança de quem valoriza a qualidade impecável e o refinamento em cada detalhe.</p>
+        <section class="about-editorial">
+            <div class="container about-editorial-grid">
+                <img src="../assets/images/resort-luxury.jpg" alt="Lifestyle Velaris à beira-mar" class="about-editorial-img">
+                <div class="about-editorial-text">
+                    <p class="about-section-kicker">Visão</p>
+                    <h2>Uma estética de verão com acabamento de alfaiataria.</h2>
+                    <p>Inspirados pela luz do entardecer e por composições minimalistas, buscamos uma linguagem visual limpa, sensorial e atemporal. O resultado é uma coleção que funciona como assinatura: discreta, elegante e fácil de usar.</p>
+                    <div class="about-signature">Beach luxury, sem excesso.</div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="editorial-section">
-            <h2>Nossos Pilares</h2>
-            <div class="values-editorial">
-                <div class="value-item">
-                    <h3>Curadoria Premium</h3>
-                    <p>Acetatos italianos e metais nobres selecionados para durabilidade extrema e conforto anatômico.</p>
-                </div>
-                <div class="value-item">
-                    <h3>Proteção Ativa</h3>
-                    <p>Lentes com proteção UV 100% que garantem nitidez e saúde ocular em qualquer intensidade de luz.</p>
-                </div>
-                <div class="value-item">
-                    <h3>Exclusividade</h3>
-                    <p>Lançamentos em edições limitadas para garantir que seu estilo permaneça único e autêntico.</p>
+        <section class="about-values">
+            <div class="container">
+                <p class="about-section-kicker">Pilares</p>
+                <h2>Detalhes que sustentam a experiência.</h2>
+                <div class="values-editorial">
+                    <div class="value-item">
+                        <span class="value-number">01</span>
+                        <h3>Curadoria Premium</h3>
+                        <p>Materiais, cores e formas selecionados para criar presença sem pesar no visual.</p>
+                    </div>
+                    <div class="value-item">
+                        <span class="value-number">02</span>
+                        <h3>Proteção Ativa</h3>
+                        <p>Lentes com proteção UV 100% para nitidez, conforto e segurança nos dias de sol.</p>
+                    </div>
+                    <div class="value-item">
+                        <span class="value-number">03</span>
+                        <h3>Exclusividade</h3>
+                        <p>Peças com linguagem própria, feitas para quem prefere elegância silenciosa.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -220,8 +463,8 @@
                     <h4>Links Rápidos</h4>
                     <ul>
                         <li><a href="../index.html">Home</a></li>
-                        <li><a href="../index.html#colecoes">Coleções</a></li>
                         <li><a href="../index.html#produtos">Produtos</a></li>
+                        <li><a href="../index.html#colecoes">Coleções</a></li>
                         <li><a href="sobre.html">Sobre</a></li>
                     </ul>
                 </div>
@@ -247,7 +490,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Velaris - Luxury Beach Eyewear. Todos os direitos reservados.</p>
+                <p>&copy; 2026 Velaris - Luxury Beach Eyewear. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

@@ -5,45 +5,53 @@ const WHATSAPP_NUMBER = '5598970216233';
 // Mock Database para Detalhes Profissionais
 const PRODUTOS_DB = {
     'produto-1': {
-        nome: 'Ocean Black Classic',
-        preco: 129.90,
-        cor: 'Preto Carbono',
-        descricao: 'Inspirado nas profundezas do Atlântico, o Ocean Black combina acetato italiano com lentes polarizadas de alta tecnologia.',
-        especificacoes: ['Proteção UV400', 'Lentes Polarizadas', 'Acetato Premium', 'Hastes Flexíveis'],
-        imagens: ['./assets/images/insta-2.jpg', './assets/images/insta-3.jpg']
+        nome: 'Óculos Sunset Safari',
+        preco: 79.99,
+        cor: 'Tartaruga / Tartoise',
+        descricao: 'Armação tartaruga com lentes verde oliva, trazendo um visual resort clássico e leve. O formato arredondado valoriza o rosto sem pesar e combina bem com produções de praia, linho e tons naturais.',
+        especificacoes: ['Proteção UV400', 'Lentes verde oliva', 'Armação tartaruga', 'Formato arredondado', 'Detalhe metálico lateral'],
+        imagens: ['./assets/images/insta-7.png']
     },
     'produto-2': {
-        nome: 'Sunset Premium',
-        preco: 149.90,
-        cor: 'Tartaruga / Dourado',
-        descricao: 'O Sunset Premium traz o brilho do entardecer para o seu olhar. Com detalhes em metal nobre e acabamento polido à mão, é a escolha perfeita para o lifestyle resort.',
-        especificacoes: ['Proteção UV400', 'Lentes Gradientes', 'Detalhes em Metal', 'Conforto Anatômico'],
+        nome: 'Óculos Midnight',
+        preco: 79.99,
+        cor: 'Preto',
+        descricao: 'Modelo preto com lente escura e presença noturna sofisticada. A silhueta levemente oval entrega um acabamento urbano, minimalista e elegante para quem prefere um visual discreto e marcante.',
+        especificacoes: ['Proteção UV400', 'Lentes escuras', 'Armação preta', 'Design oval minimalista', 'Detalhe lateral discreto'],
         imagens: ['./assets/images/insta-3.jpg']
     },
     'produto-3': {
-        nome: 'Areia Sofisticada',
-        preco: 139.90,
-        cor: 'Nude Matte',
-        descricao: 'Tons neutros que harmonizam com qualquer ambiente. O modelo Areia é leve e resistente, ideal para uso prolongado.',
-        especificacoes: ['Proteção UV400', 'Acetato Fosco', 'Design Anatômico', 'Ultra Leve'],
-        imagens: ['./assets/images/insta-4.jpg']
+        nome: 'Óculos Yellow Sunset',
+        preco: 69.99,
+        cor: 'Preto & Amarelo',
+        descricao: 'Armação preta com lentes amarelas translúcidas, feita para um visual solar e descontraído. É uma peça leve, moderna e perfeita para destacar looks claros, praia e fim de tarde.',
+        especificacoes: ['Proteção UV400', 'Lentes amarelas', 'Armação preta', 'Formato redondo leve', 'Visual sunset'],
+        imagens: ['./assets/images/insta-6.jpg']
     },
     'produto-4': {
-        nome: 'Marítimo Clean',
-        preco: 119.90,
-        cor: 'Crystal / Azul',
-        descricao: 'Transparência e leveza definem o Marítimo Clean. Um visual moderno para quem busca um acessório discreto e marcante.',
-        especificacoes: ['Proteção UV400', 'Lentes Cristalinas', 'Acabamento Premium'],
+        nome: 'Óculos Breeze',
+        preco: 74.99,
+        cor: 'Preto & Marrom',
+        descricao: 'O Breeze combina armação preta com lentes marrons, criando uma leitura quente e elegante. O desenho arredondado tem aparência leve e casual, ideal para uso diário com estética praiana sofisticada.',
+        especificacoes: ['Proteção UV400', 'Lentes marrons', 'Armação preta', 'Formato redondo', 'Acabamento leve para o dia a dia'],
         imagens: ['./assets/images/insta-5.jpg']
     },
     'produto-5': {
-        nome: 'Luxe Azul',
-        preco: 159.90,
-        cor: 'Navy Blue',
-        descricao: 'O auge da sofisticação. O Luxe Azul traz detalhes refinados e uma cor exclusiva que remete ao mar profundo.',
-        especificacoes: ['Proteção UV400', 'Lentes Polarizadas', 'Hastes Reforçadas', 'Edição Limitada'],
-        imagens: ['./assets/images/insta-6.jpg']
-    }
+        nome: 'Óculos Crystal Blue',
+        preco: 69.99,
+        cor: 'Preto & Ciano',
+        descricao: 'Modelo com armação preta e lentes azul ciano translúcidas, trazendo frescor visual e uma pegada beach club. A lente clara cria um efeito cristalino, moderno e fácil de combinar com tons neutros.',
+        especificacoes: ['Proteção UV400', 'Lentes ciano translúcidas', 'Armação preta', 'Visual crystal', 'Detalhe metálico lateral'],
+        imagens: ['./assets/images/insta-4.jpg']
+    },
+    'produto-6': {
+        nome: 'Óculos Crystal Grey',
+        preco: 74.99,
+        cor: 'Preto & Cinza',
+        descricao: 'Armação cinza translúcida com lentes fumê, equilibrando modernidade e discrição. O acabamento cristalizado deixa o modelo elegante, versátil e com presença premium sem exagero.',
+        especificacoes: ['Proteção UV400', 'Lentes cinza fumê', 'Armação cinza translúcida', 'Formato arredondado', 'Detalhes dourados laterais'],
+        imagens: ['./assets/images/insta-8.jpg']
+    },
 };
 
 // Modal de Produto
@@ -64,7 +72,6 @@ function abrirPaginaProduto(id) {
                     </div>
                 </div>
                 <div class="modal-info">
-                    <span class="badge destaque">Best Seller</span>
                     <h2>${produto.nome}</h2>
                     <div class="modal-price">R$ ${produto.preco.toFixed(2)}</div>
                     <div class="modal-color"><strong>Cor:</strong> ${produto.cor}</div>
@@ -124,6 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFAQ();
     loadCartFromStorage();
     atualizarCarrinho();
+    if (window.location.hash === '#cart' && document.getElementById('cartModal')) {
+        abrirCarrinho();
+    }
 });
 
 // Navigation
@@ -149,19 +159,19 @@ function initializeNav() {
 
 // Cart Functions
 function initializeCart() {
-    const cartIcon = document.querySelector('.cart-icon');
+    const cartIcons = document.querySelectorAll('.cart-icon');
     const closeCartBtn = document.querySelector('.close-cart');
     const cartModal = document.getElementById('cartModal');
 
-    if (cartIcon && cartModal) {
-        cartIcon.addEventListener('click', (e) => {
+    if (cartIcons.length && cartModal) {
+        cartIcons.forEach(cartIcon => cartIcon.addEventListener('click', (e) => {
             e.preventDefault();
             if (cartModal.classList.contains('active')) {
                 fecharCarrinho();
             } else {
                 abrirCarrinho();
             }
-        });
+        }));
     }
 
     if (closeCartBtn) {
@@ -213,12 +223,12 @@ function adicionarAoCarrinho(nome, preco, quantidade = 1) {
     mostrarNotificacao('Produto adicionado ao carrinho!');
     
     // Shake icon effect
-    const cartIcon = document.querySelector('.cart-icon');
-    if (cartIcon) {
+    const cartIcons = document.querySelectorAll('.cart-icon');
+    cartIcons.forEach(cartIcon => {
         cartIcon.classList.remove('cart-shake');
         void cartIcon.offsetWidth; // Trigger reflow to restart animation
         cartIcon.classList.add('cart-shake');
-    }
+    });
 }
 
 function removerDoCarrinho(id) {
@@ -242,15 +252,15 @@ function atualizarQuantidade(id, quantidade) {
 
 function atualizarCarrinho() {
     const cartItemsDiv = document.getElementById('cartItems');
-    const cartCount = document.querySelector('.cart-count');
+    const cartCounts = document.querySelectorAll('.cart-count');
     const subtotalSpan = document.getElementById('subtotal');
     const totalSpan = document.getElementById('total');
 
     // Update count
     const totalItems = cart.reduce((sum, item) => sum + item.quantidade, 0);
-    if (cartCount) {
+    cartCounts.forEach(cartCount => {
         cartCount.textContent = totalItems;
-    }
+    });
 
     // Update items
     if (cartItemsDiv) {
@@ -558,7 +568,7 @@ document.querySelectorAll('.produto-card, .colecao-card, .faq-item').forEach(el 
 
 // Prevent cart count increment glitch
 document.addEventListener('click', (e) => {
-    if (e.target.matches('.cart-icon') || e.target.closest('.cart-icon')) {
+    if (document.getElementById('cartModal') && (e.target.matches('.cart-icon') || e.target.closest('.cart-icon'))) {
         e.preventDefault();
     }
 });
