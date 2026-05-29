@@ -27,8 +27,9 @@ velaris.club/
 - **Branco Sofisticado**: #ffffff
 - **Azul Marinho**: #001a33 (principal)
 - **Azul Oceano**: #1a4d7a
-- **Tom Areia**: #c9b8a8
-- **Off-white Clean**: #f5f1ed / #f9f8f6
+- **Azul Aqua**: #5ac7dd
+- **Azul Gelo**: #bdefff
+- **Off-white Azul**: #f2fbff / #f5fbff
 - **Textos**: #333333
 - **Secundário**: #0066cc
 
@@ -190,9 +191,10 @@ Edite as variáveis CSS em `css/styles.css`:
 ```css
 :root {
     --primary: #001a33;        /* Azul marinho */
-    --secondary: #f5f1ed;      /* Off-white */
+    --secondary: #f2fbff;      /* Branco azulado */
     --accent: #0066cc;         /* Azul destaque */
-    --sand: #c9b8a8;           /* Areia */
+    --aqua: #5ac7dd;           /* Azul aqua */
+    --ice-blue: #bdefff;       /* Azul claro */
     --ocean: #1a4d7a;          /* Oceano */
     /* ... */
 }

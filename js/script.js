@@ -148,6 +148,7 @@ function fecharDetalhes() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
+    initializePageLoader();
     initializeNav();
     initializeCart();
     initializeFilters();
@@ -158,6 +159,153 @@ document.addEventListener('DOMContentLoaded', function() {
         abrirCarrinho();
     }
 });
+
+function initializePageLoader() {
+    const loader = document.getElementById('siteLoader');
+    if (!loader) return;
+
+    const skipLoader = new URLSearchParams(window.location.search).get('skipLoader') === '1';
+    const startedAt = Date.now();
+    const minVisibleTime = 3200;
+    const maxWaitTime = 10000;
+    const progressBar = loader.querySelector('.site-loader-line');
+    const progressPercent = loader.querySelector('[data-loader-percent]');
+    let visualProgress = 0;
+    let targetProgress = 7;
+
+    const setLoaderProgress = (value) => {
+        visualProgress = Math.max(0, Math.min(100, value));
+        const roundedProgress = Math.round(visualProgress);
+
+        loader.style.setProperty('--loader-progress', `${visualProgress}%`);
+        if (progressBar) {
+            progressBar.setAttribute('aria-valuenow', roundedProgress);
+        }
+        if (progressPercent) {
+            progressPercent.textContent = `${roundedProgress}%`;
+        }
+    };
+
+    const progressTimer = setInterval(() => {
+        if (loader.dataset.done === 'true') return;
+
+        const elapsed = Date.now() - startedAt;
+        const timedTarget = Math.min(92, 10 + (elapsed / minVisibleTime) * 54 + (elapsed / maxWaitTime) * 28);
+        targetProgress = Math.max(targetProgress, timedTarget);
+        visualProgress += (targetProgress - visualProgress) * 0.08;
+        setLoaderProgress(visualProgress);
+    }, 80);
+
+    setLoaderProgress(0);
+
+    const hideLoader = (immediate = false) => {
+        if (loader.dataset.done === 'true') return;
+        loader.dataset.done = 'true';
+        targetProgress = 100;
+        setLoaderProgress(100);
+
+        const finish = () => {
+            clearInterval(progressTimer);
+            document.body.classList.remove('is-loading');
+
+            if (immediate) {
+                loader.remove();
+                return;
+            }
+
+            loader.classList.add('site-loader--hidden');
+            loader.setAttribute('aria-hidden', 'true');
+            setTimeout(() => loader.remove(), 900);
+        };
+
+        if (immediate) {
+            finish();
+            return;
+        }
+
+        const elapsed = Date.now() - startedAt;
+        const progressFinishDelay = immediate ? 0 : 650;
+        setTimeout(finish, Math.max(0, minVisibleTime - elapsed) + progressFinishDelay);
+    };
+
+    if (skipLoader) {
+        hideLoader(true);
+        return;
+    }
+
+    const heroVideos = Array.from(document.querySelectorAll('.hero-video'));
+    const waitForVideos = Promise.all(heroVideos.map(waitForVideoReady)).then(() => {
+        heroVideos.forEach(playHeroVideo);
+        return Promise.all(heroVideos.map(waitForVideoFrame));
+    });
+
+    const fallbackTimeout = new Promise(resolve => setTimeout(resolve, maxWaitTime));
+
+    Promise.race([waitForVideos, fallbackTimeout]).then(() => hideLoader());
+}
+
+function waitForVideoReady(video) {
+    return new Promise(resolve => {
+        if (!video || video.readyState >= 3) {
+            resolve();
+            return;
+        }
+
+        const readyEvents = ['canplay', 'playing', 'canplaythrough', 'loadeddata', 'error'];
+        let isResolved = false;
+
+        const markReady = () => {
+            if (isResolved) return;
+            isResolved = true;
+            readyEvents.forEach(eventName => video.removeEventListener(eventName, markReady));
+            resolve();
+        };
+
+        readyEvents.forEach(eventName => video.addEventListener(eventName, markReady, { once: true }));
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('preload', 'auto');
+
+        try {
+            video.load();
+        } catch (error) {
+            markReady();
+        }
+
+        playHeroVideo(video);
+    });
+}
+
+function waitForVideoFrame(video) {
+    return new Promise(resolve => {
+        if (!video || video.readyState < 2) {
+            resolve();
+            return;
+        }
+
+        if ('requestVideoFrameCallback' in video) {
+            const timeout = setTimeout(resolve, 450);
+            video.requestVideoFrameCallback(() => {
+                clearTimeout(timeout);
+                resolve();
+            });
+            return;
+        }
+
+        requestAnimationFrame(() => requestAnimationFrame(resolve));
+    });
+}
+
+function playHeroVideo(video) {
+    if (!video) return;
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+    }
+}
 
 // Navigation
 function initializeNav() {
@@ -252,7 +400,6 @@ function adicionarAoCarrinho(nome, preco, quantidade = 1) {
 
     salvarCarrinhoStorage();
     atualizarCarrinho();
-    abrirCarrinho();
     
     // Animation feedback
     mostrarNotificacao('Produto adicionado ao carrinho!');
