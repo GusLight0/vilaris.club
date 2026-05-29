@@ -1,6 +1,29 @@
 // Global Variables
 let cart = [];
 const WHATSAPP_NUMBER = '5598970216233';
+const FORMATADOR_PRECO = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+});
+
+function formatarPreco(preco) {
+    return FORMATADOR_PRECO.format(preco);
+}
+
+function montarPrecoMarkup(preco) {
+    const partes = FORMATADOR_PRECO.formatToParts(preco);
+    let moeda = 'R$';
+    let valor = '';
+
+    partes.forEach(parte => {
+        if (parte.type === 'currency') moeda = parte.value;
+        if (['integer', 'group', 'decimal', 'fraction'].includes(parte.type)) {
+            valor += parte.value;
+        }
+    });
+
+    return `<span class="preco-moeda">${moeda}</span><span class="preco-valor">${valor}</span>`;
+}
 
 // Mock Database para Detalhes Profissionais
 const PRODUTOS_DB = {
@@ -73,7 +96,7 @@ function abrirPaginaProduto(id) {
                 </div>
                 <div class="modal-info">
                     <h2>${produto.nome}</h2>
-                    <div class="modal-price">R$ ${produto.preco.toFixed(2)}</div>
+                    <div class="modal-price">${montarPrecoMarkup(produto.preco)}</div>
                     <div class="modal-color"><strong>Cor:</strong> ${produto.cor}</div>
                     <div class="modal-description">${produto.descricao}</div>
                     
@@ -271,7 +294,7 @@ function atualizarCarrinho() {
                 <div class="cart-item">
                     <div class="cart-item-info">
                         <h4>${item.nome}</h4>
-                        <p>R$ ${item.preco.toFixed(2)}</p>
+                        <p>${formatarPreco(item.preco)}</p>
                     </div>
                     <div class="cart-item-controls">
                         <button class="qty-btn" onclick="atualizarQuantidade(${item.id}, ${item.quantidade - 1})">−</button>
@@ -287,10 +310,10 @@ function atualizarCarrinho() {
     // Update totals
     const subtotal = cart.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
     if (subtotalSpan) {
-        subtotalSpan.textContent = `R$ ${subtotal.toFixed(2)}`;
+        subtotalSpan.textContent = formatarPreco(subtotal);
     }
     if (totalSpan) {
-        totalSpan.textContent = `R$ ${subtotal.toFixed(2)}`;
+        totalSpan.textContent = formatarPreco(subtotal);
     }
 }
 
@@ -320,11 +343,11 @@ function finalizarCompra() {
         const totalItem = (item.preco * item.quantidade).toFixed(2);
         mensagem += `🕶️ Produto: ${item.nome}\n`;
         mensagem += `   Quantidade: ${item.quantidade}\n`;
-        mensagem += `   Valor: R$ ${item.preco.toFixed(2)}\n\n`;
+        mensagem += `   Valor: ${formatarPreco(item.preco)}\n\n`;
     });
 
     const total = cart.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
-    mensagem += `💰 Total do pedido: R$ ${total.toFixed(2)}\n\n`;
+    mensagem += `💰 Total do pedido: ${formatarPreco(total)}\n\n`;
     
     if (observacoes) {
         mensagem += `📝 Observações: ${observacoes}\n\n`;
