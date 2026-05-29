@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0.15rem 1.5rem;
+    padding: 0.4625rem 1.5rem 0.15rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -263,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     text-align: left;
     overflow: hidden;
-    margin-top: 58px;
+    margin-top: 63px;
     background: var(--primary);
     isolation: isolate;
 }
@@ -927,6 +927,27 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
     color: var(--primary);
     font-weight: 300;
+}
+
+.clear-search-btn {
+    min-height: 42px;
+    padding: 0.72rem 1.2rem;
+    border: 1px solid rgba(0, 26, 51, 0.16);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.clear-search-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
 }
 
 .product-modal.active {
@@ -1629,7 +1650,7 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 0.3rem 1.25rem;
+        padding: 0.6125rem 1.25rem 0.3rem;
     }
 
     .logo img {

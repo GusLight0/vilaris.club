@@ -31,7 +31,7 @@
             <div class="nav-menu">
                 <div class="nav-search-container">
                     <i class="fas fa-search search-icon-inside"></i>
-                    <input type="text" id="searchInput" class="nav-search-input" placeholder="O que você procura?">
+                    <input type="search" id="searchInput" class="nav-search-input" placeholder="O que você procura?" enterkeyhint="search">
                 </div>
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#produtos" class="nav-link">Produtos</a>
@@ -207,6 +207,9 @@
                     <i class="fas fa-search"></i>
                     <h3>Nenhum modelo encontrado com esses critérios.</h3>
                     <p>Tente ajustar sua busca ou mudar o filtro de categoria.</p>
+                    <button type="button" id="clearSearchBtn" class="clear-search-btn">
+                        Limpar busca
+                    </button>
                 </div>
             </div>
         </div>

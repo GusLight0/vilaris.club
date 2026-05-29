@@ -166,6 +166,10 @@ function initializeNav() {
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                fecharCarrinho();
+            }
+
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
@@ -178,6 +182,14 @@ function initializeNav() {
             hamburger.classList.remove('active');
         });
     });
+}
+
+function fecharMenuMobile() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (navMenu) navMenu.classList.remove('active');
+    if (hamburger) hamburger.classList.remove('active');
 }
 
 // Cart Functions
@@ -377,6 +389,7 @@ function initializeFilters() {
     const filterMenu = document.getElementById('filterMenu');
     const filtroButtons = document.querySelectorAll('.filtro-btn');
     const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
 
     atualizarContadoresFiltros();
 
@@ -410,12 +423,25 @@ function initializeFilters() {
         searchInput.addEventListener('input', (e) => {
             const activeFiltro = document.querySelector('.filtro-btn.active').dataset.filtro;
             filtrarProdutos(activeFiltro, e.target.value);
-
-            // Se o usuário começar a digitar, redireciona para a seção de produtos
-            if (e.target.value.length > 0) {
-                scrollToSection('produtos');
-            }
         });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter') return;
+
+            e.preventDefault();
+
+            const activeFiltroBtn = document.querySelector('.filtro-btn.active');
+            const activeFiltro = activeFiltroBtn ? activeFiltroBtn.dataset.filtro : 'todos';
+
+            filtrarProdutos(activeFiltro, e.target.value.trim());
+            fecharMenuMobile();
+            searchInput.blur();
+            scrollToSection('produtos');
+        });
+    }
+
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', limparPesquisaProdutos);
     }
 }
 
@@ -464,16 +490,22 @@ function filtrarProdutos(filtro, searchTerm = '') {
             }
         }
 
+        if (produto._filterTimer) {
+            clearTimeout(produto._filterTimer);
+        }
+
         if (mostrar) {
             visibleCount++;
-            produto.classList.remove('product-hidden');
-            setTimeout(() => {
-                produto.style.display = 'flex';
-            }, 10);
+            produto.style.display = 'flex';
+            requestAnimationFrame(() => {
+                produto.classList.remove('product-hidden');
+            });
         } else {
             produto.classList.add('product-hidden');
-            setTimeout(() => {
-                produto.style.display = 'none';
+            produto._filterTimer = setTimeout(() => {
+                if (produto.classList.contains('product-hidden')) {
+                    produto.style.display = 'none';
+                }
             }, 300);
         }
     });
@@ -487,6 +519,24 @@ function filtrarProdutos(filtro, searchTerm = '') {
             noResults.classList.add('hidden');
         }
     }
+}
+
+function limparPesquisaProdutos() {
+    const searchInput = document.getElementById('searchInput');
+    const filtroButtons = document.querySelectorAll('.filtro-btn');
+    const todosBtn = document.querySelector('.filtro-btn[data-filtro="todos"]');
+    const filterToggle = document.getElementById('filterToggle');
+    const filterMenu = document.getElementById('filterMenu');
+
+    if (searchInput) searchInput.value = '';
+
+    filtroButtons.forEach(btn => btn.classList.remove('active'));
+    if (todosBtn) todosBtn.classList.add('active');
+
+    filtrarProdutos('todos', '');
+    if (filterToggle) filterToggle.classList.remove('active');
+    if (filterMenu) filterMenu.classList.remove('active');
+    scrollToSection('produtos');
 }
 
 // FAQ Accordion
