@@ -17,7 +17,7 @@
             justify-content: center;
             text-align: center;
             overflow: hidden;
-            margin-top: 70px;
+            margin-top: 58px;
             background: var(--primary);
             isolation: isolate;
         }
@@ -310,6 +310,16 @@
                 padding: 4rem 0;
             }
 
+            .about-hero h1 {
+                font-size: clamp(2.75rem, 11vw, 3.5rem);
+                line-height: 1;
+            }
+
+            .about-hero p:not(.about-kicker) {
+                font-size: 0.98rem;
+                max-width: 20.5rem;
+            }
+
             .about-intro-grid,
             .about-editorial-grid {
                 grid-template-columns: 1fr;
@@ -334,7 +344,7 @@
                     <img src="../assets/icons/logo-site-circle.png" alt="Logo Velaris" width="64">
                 </div>
                 <div class="mobile-nav-actions">
-                    <a href="../index.html#cart" class="nav-link cart-icon mobile-cart-icon" aria-label="Abrir carrinho">
+                    <a href="../index.html#cartModal" class="nav-link cart-icon mobile-cart-icon" aria-label="Abrir carrinho">
                         <i class="fas fa-shopping-bag"></i>
                         <span class="cart-count">0</span>
                     </a>
@@ -351,7 +361,7 @@
                 <a href="../index.html#colecoes" class="nav-link">Coleções</a>
                 <a href="sobre.html" class="nav-link">Sobre</a>
                 <a href="contato.html" class="nav-link">Contato</a>
-                <a href="../index.html#cart" class="nav-link cart-icon desktop-cart-icon">
+                <a href="../index.html#cartModal" class="nav-link cart-icon desktop-cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-count">0</span>
                 </a>

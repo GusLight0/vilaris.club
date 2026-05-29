@@ -61,7 +61,7 @@ const PRODUTOS_DB = {
     },
     'produto-5': {
         nome: 'Óculos Crystal Blue',
-        preco: 69.99,
+        preco: 79.99,
         cor: 'Preto & Ciano',
         descricao: 'Modelo com armação preta e lentes azul ciano translúcidas, trazendo frescor visual e uma pegada beach club. A lente clara cria um efeito cristalino, moderno e fácil de combinar com tons neutros.',
         especificacoes: ['Proteção UV400', 'Lentes ciano translúcidas', 'Armação preta', 'Visual crystal', 'Detalhe metálico lateral'],
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFAQ();
     loadCartFromStorage();
     atualizarCarrinho();
-    if (window.location.hash === '#cart' && document.getElementById('cartModal')) {
+    if ((window.location.hash === '#cart' || window.location.hash === '#cartModal') && document.getElementById('cartModal')) {
         abrirCarrinho();
     }
 });
