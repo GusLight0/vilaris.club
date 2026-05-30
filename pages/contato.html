@@ -100,38 +100,6 @@
             color: var(--aqua);
         }
 
-        .form-editorial {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .input-group {
-            position: relative;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 0.6rem;
-        }
-
-        .input-group input, .input-group textarea {
-            width: 100%;
-            padding: 1rem 0;
-            border: none;
-            border-bottom: 1px solid var(--border);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            background: transparent;
-        }
-
-        .input-group input:focus, .input-group textarea:focus {
-            outline: none;
-            border-color: var(--aqua);
-        }
-
         .social-row {
             display: flex;
             gap: 2rem;
@@ -382,41 +350,78 @@
             box-shadow: 0 24px 70px rgba(0, 26, 51, 0.08);
         }
 
-        .form-editorial {
-            gap: 1.5rem;
-        }
-
-        .input-group label {
+        .contact-main h3 {
+            max-width: 620px;
             color: var(--primary);
-            font-size: 0.86rem;
-            font-weight: 600;
+            font-family: 'Bodoni 72', Didot, Georgia, 'Times New Roman', serif;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            font-weight: 400;
             letter-spacing: 0;
+            line-height: 1.08;
+            margin-bottom: 1rem;
+            text-wrap: balance;
         }
 
-        .input-group input,
-        .input-group textarea {
-            min-height: 50px;
-            padding: 0.9rem 0;
-            color: var(--text);
-            border-bottom-color: rgba(0, 26, 51, 0.14);
+        .contact-main-copy {
+            max-width: 620px;
+            color: #56616b;
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 2rem;
         }
 
-        .input-group textarea {
-            min-height: 140px;
-            resize: vertical;
+        .contact-channel-list {
+            display: grid;
+            gap: 1rem;
         }
 
-        .input-group input:focus,
-        .input-group textarea:focus {
-            border-color: var(--primary);
+        .contact-channel-card {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 1rem;
+            align-items: center;
+            min-height: 92px;
+            padding: 1rem;
+            border: 1px solid rgba(0, 26, 51, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        .contact-submit {
-            width: fit-content;
-            min-width: 220px;
-            margin-top: 0.5rem;
-            border-radius: 6px;
-            letter-spacing: 0;
+        .contact-channel-card:hover {
+            border-color: rgba(0, 26, 51, 0.28);
+            transform: translateY(-2px);
+            box-shadow: 0 18px 45px rgba(0, 26, 51, 0.08);
+        }
+
+        .contact-channel-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-channel-card strong,
+        .contact-channel-card small {
+            display: block;
+        }
+
+        .contact-channel-card strong {
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-channel-card small {
+            color: #677580;
+            font-size: 0.92rem;
+            line-height: 1.55;
         }
 
         .social-row {
@@ -512,10 +517,6 @@
 
             .contact-sidebar {
                 position: static;
-            }
-
-            .contact-submit {
-                width: 100%;
             }
 
             .social-row {
@@ -639,32 +640,31 @@
                 </div>
 
                 <div class="contact-main">
-                    <form id="contactForm" class="form-editorial" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="1348fd86-1296-4118-9ccd-6e29ecbe916f">
-                        <div class="input-group">
-                            <label>Nome completo</label>
-                            <input type="text" id="name" name="name" required placeholder="Ex: Maria Silva">
-                        </div>
+                    <p class="contact-section-kicker">Meios de contato</p>
+                    <h3>Fale direto com a Velaris.</h3>
+                    <p class="contact-main-copy">Escolha o canal que preferir para consultar disponibilidade, combinar entrega ou receber ajuda com a escolha do modelo.</p>
 
-                        <div class="input-group">
-                            <label>Email para retorno</label>
-                            <input type="email" id="email" name="email" required placeholder="contato@exemplo.com">
-                        </div>
+                    <div class="contact-channel-list">
+                        <a href="https://wa.me/5598970216233" target="_blank" class="contact-channel-card">
+                            <span class="contact-channel-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </span>
+                            <span>
+                                <strong>WhatsApp oficial</strong>
+                                <small>+55 98 97021-6233 para pedidos, disponibilidade e delivery local.</small>
+                            </span>
+                        </a>
 
-                        <div class="input-group">
-                            <label>WhatsApp / telefone</label>
-                            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(00) 00000-0000">
-                        </div>
-
-                        <div class="input-group">
-                            <label>Sua mensagem</label>
-                            <textarea id="message" name="message" required placeholder="Conte se você procura um modelo específico, presente, entrega ou sugestão de estilo."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary contact-submit">
-                            Enviar mensagem
-                        </button>
-                    </form>
+                        <a href="https://instagram.com/velaris.club" target="_blank" class="contact-channel-card">
+                            <span class="contact-channel-icon">
+                                <i class="fab fa-instagram"></i>
+                            </span>
+                            <span>
+                                <strong>Instagram</strong>
+                                <small>@velaris.club para novidades, curadoria e atendimento por mensagem direta.</small>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -750,32 +750,5 @@
     </a>
 
     <script src="../js/script.js"></script>
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            const form = e.target;
-            const action = form.getAttribute('action');
-
-            // Se você ainda não configurou a API (manteve o placeholder), usamos o WhatsApp
-            if (action === "SUA_URL_DA_API_AQUI" || action === "" || action === "#") {
-                e.preventDefault();
-                
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const whatsapp = document.getElementById('whatsapp').value;
-                const message = document.getElementById('message').value;
-
-                const whatsappMessage = `Formulário de Contato Velaris\n\n` +
-                    `Nome: ${name}\n` +
-                    `Email: ${email}\n` +
-                    `WhatsApp: ${whatsapp}\n\n` +
-                    `Mensagem:\n${message}`;
-
-                const urlEncodedMessage = encodeURIComponent(whatsappMessage);
-                window.open(`https://wa.me/5598970216233?text=${urlEncodedMessage}`, '_blank');
-            }
-            
-            // Se o action for uma URL real, o navegador seguirá com o envio POST automaticamente
-        });
-    </script>
 </body>
 </html>
