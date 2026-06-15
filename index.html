@@ -104,6 +104,7 @@
                     <button class="filtro-btn active" data-filtro="todos">Todos</button>
                     <button class="filtro-btn" data-filtro="destaque">Destaque</button>
                     <button class="filtro-btn" data-filtro="promocao">Promoção</button>
+                    <button class="filtro-btn" data-filtro="armacao">Armações</button>
                 </div>
             </div>
 
@@ -111,7 +112,7 @@
                 <!-- Produto 1 -->
                 <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-1')">
                     <div class="produto-image">
-                        <img src="./assets/images/insta-7.png" alt="Óculos Sunset Safari">
+                        <img src="./assets/images/insta-7-1.jpeg" alt="Óculos Sunset Safari">
                         <span class="badge destaque">Destaque</span>
                         <div class="produto-hover">
                             <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Sunset Safari', 79.99)">
@@ -170,7 +171,7 @@
                 <!-- Produto 4 -->
                 <div class="produto-card" data-filtro="normal" onclick="abrirPaginaProduto('produto-4')">
                     <div class="produto-image">
-                        <img src="./assets/images/insta-5.jpg" alt="Óculos Breeze">
+                        <img src="./assets/images/insta-5-1.jpeg" alt="Óculos Breeze">
                         <div class="produto-hover">
                             <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Breeze', 74.99)">
                                 <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
@@ -189,7 +190,7 @@
                 <!-- Produto 5 -->
                 <div class="produto-card" data-filtro="normal" onclick="abrirPaginaProduto('produto-5')">
                     <div class="produto-image">
-                        <img src="./assets/images/insta-4.jpg" alt="Óculos Crystal Blue">
+                        <img src="./assets/images/insta-4-1.jpeg" alt="Óculos Crystal Blue">
                         <div class="produto-hover">
                             <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Blue', 79.99)">
                                 <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
@@ -208,7 +209,7 @@
                 <!-- Produto 6 -->
                 <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-6')">
                     <div class="produto-image">
-                        <img src="./assets/images/insta-8.jpg" alt="Óculos Crystal Grey">
+                        <img src="./assets/images/insta-8-1.jpeg" alt="Óculos Crystal Grey">
                         <span class="badge destaque">Destaque</span>
                         <div class="produto-hover">
                             <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Grey', 74.99)">
@@ -221,6 +222,66 @@
                         <div class="produto-footer">
                             <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">74,99</span></span>
                             <span class="badge-entrega">Pronta Entrega</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 7 -->
+                <div class="produto-card" data-filtro="normal armacao" onclick="abrirPaginaProduto('produto-7')">
+                    <div class="produto-image">
+                        <img src="./assets/images/armacao-1.jpeg" alt="Armação Preta">
+                        <span class="badge armacao">Armação</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart btn-view-details" onclick="event.stopPropagation(); abrirPaginaProduto('produto-7')">
+                                <i class="fas fa-eye"></i> <span>Ver detalhes</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Armação Preta</h3>
+                        <div class="produto-footer">
+                            <span class="preco preco-pendente">Preço em breve</span>
+                            <span class="badge-entrega">Nova</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 8 -->
+                <div class="produto-card" data-filtro="normal armacao" onclick="abrirPaginaProduto('produto-8')">
+                    <div class="produto-image">
+                        <img src="./assets/images/armacao-2.jpeg" alt="Armação Sunset Safari">
+                        <span class="badge armacao">Armação</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart btn-view-details" onclick="event.stopPropagation(); abrirPaginaProduto('produto-8')">
+                                <i class="fas fa-eye"></i> <span>Ver detalhes</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Armação Sunset Safari</h3>
+                        <div class="produto-footer">
+                            <span class="preco preco-pendente">Preço em breve</span>
+                            <span class="badge-entrega">Nova</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produto 9 -->
+                <div class="produto-card" data-filtro="normal armacao" onclick="abrirPaginaProduto('produto-9')">
+                    <div class="produto-image">
+                        <img src="./assets/images/armacao-3.jpeg" alt="Armação Feminina">
+                        <span class="badge armacao">Armação</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart btn-view-details" onclick="event.stopPropagation(); abrirPaginaProduto('produto-9')">
+                                <i class="fas fa-eye"></i> <span>Ver detalhes</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Armação Feminina</h3>
+                        <div class="produto-footer">
+                            <span class="preco preco-pendente">Preço em breve</span>
+                            <span class="badge-entrega">Nova</span>
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,7 @@ const PRODUTOS_DB = {
         cor: 'Tartaruga / Tartoise',
         descricao: 'Armação tartaruga com lentes verde oliva, trazendo um visual resort clássico e leve. O formato arredondado valoriza o rosto sem pesar e combina bem com produções de praia, linho e tons naturais.',
         especificacoes: ['Proteção UV400', 'Lentes verde oliva', 'Armação tartaruga', 'Formato arredondado', 'Detalhe metálico lateral'],
-        imagens: ['./assets/images/insta-7.png']
+        imagens: ['./assets/images/insta-7-1.jpeg', './assets/images/insta-7.png']
     },
     'produto-2': {
         nome: 'Óculos Midnight',
@@ -57,7 +57,7 @@ const PRODUTOS_DB = {
         cor: 'Preto & Marrom',
         descricao: 'O Breeze combina armação preta com lentes marrons, criando uma leitura quente e elegante. O desenho arredondado tem aparência leve e casual, ideal para uso diário com estética praiana sofisticada.',
         especificacoes: ['Proteção UV400', 'Lentes marrons', 'Armação preta', 'Formato redondo', 'Acabamento leve para o dia a dia'],
-        imagens: ['./assets/images/insta-5.jpg']
+        imagens: ['./assets/images/insta-5-1.jpeg', './assets/images/insta-5.jpg']
     },
     'produto-5': {
         nome: 'Óculos Crystal Blue',
@@ -65,7 +65,7 @@ const PRODUTOS_DB = {
         cor: 'Preto & Ciano',
         descricao: 'Modelo com armação preta e lentes azul ciano translúcidas, trazendo frescor visual e uma pegada beach club. A lente clara cria um efeito cristalino, moderno e fácil de combinar com tons neutros.',
         especificacoes: ['Proteção UV400', 'Lentes ciano translúcidas', 'Armação preta', 'Visual crystal', 'Detalhe metálico lateral'],
-        imagens: ['./assets/images/insta-4.jpg']
+        imagens: ['./assets/images/insta-4-1.jpeg', './assets/images/insta-4.jpg']
     },
     'produto-6': {
         nome: 'Óculos Crystal Grey',
@@ -73,7 +73,31 @@ const PRODUTOS_DB = {
         cor: 'Preto & Cinza',
         descricao: 'Armação cinza translúcida com lentes fumê, equilibrando modernidade e discrição. O acabamento cristalizado deixa o modelo elegante, versátil e com presença premium sem exagero.',
         especificacoes: ['Proteção UV400', 'Lentes cinza fumê', 'Armação cinza translúcida', 'Formato arredondado', 'Detalhes dourados laterais'],
-        imagens: ['./assets/images/insta-8.jpg']
+        imagens: ['./assets/images/insta-8-1.jpeg', './assets/images/insta-8.jpg']
+    },
+    'produto-7': {
+        nome: 'Armação Preta',
+        preco: null,
+        cor: 'Preto',
+        descricao: 'Armação preta de formato arredondado, com visual clássico e versátil para o dia a dia. O acabamento discreto combina facilmente com diferentes estilos e tipos de lente.',
+        especificacoes: ['Armação para lentes de grau', 'Cor preta', 'Formato arredondado', 'Design unissex', 'Lentes não inclusas'],
+        imagens: ['./assets/images/armacao-1.jpeg']
+    },
+    'produto-8': {
+        nome: 'Armação Sunset Safari',
+        preco: null,
+        cor: 'Tartaruga',
+        descricao: 'Armação tartaruga com tons quentes inspirados no Sunset Safari. O desenho arredondado une personalidade, elegância e uma estética natural.',
+        especificacoes: ['Armação para lentes de grau', 'Estampa tartaruga', 'Formato arredondado', 'Tons quentes', 'Lentes não inclusas'],
+        imagens: ['./assets/images/armacao-2.jpeg']
+    },
+    'produto-9': {
+        nome: 'Armação Feminina',
+        preco: null,
+        cor: 'Tartaruga',
+        descricao: 'Armação feminina tartaruga com formato oval delicado e elegante. Uma opção leve e sofisticada para compor produções clássicas ou modernas.',
+        especificacoes: ['Armação para lentes de grau', 'Estampa tartaruga', 'Formato oval', 'Design feminino', 'Lentes não inclusas'],
+        imagens: ['./assets/images/armacao-3.jpeg']
     },
 };
 
@@ -83,20 +107,40 @@ function abrirPaginaProduto(id) {
     if (!produto) return;
 
     const modal = document.getElementById('productDetailModal');
+    const temPreco = Number.isFinite(produto.preco);
+    const precoMarkup = temPreco
+        ? montarPrecoMarkup(produto.preco)
+        : '<span class="modal-price-pending">Preço em breve</span>';
+    const acoesMarkup = temPreco
+        ? `
+            <div class="quantity-selector">
+                <button class="qty-btn" onclick="updateModalQuantity(-1)">-</button>
+                <span id="modalQuantity">1</span>
+                <button class="qty-btn" onclick="updateModalQuantity(1)">+</button>
+            </div>
+            <button class="btn btn-primary full-width" onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco}, parseInt(document.getElementById('modalQuantity').textContent)); fecharDetalhes();">Adicionar ao Carrinho</button>
+        `
+        : `
+            <p class="modal-price-note">O valor desta armação será informado em breve.</p>
+            <button class="btn btn-primary full-width" onclick="consultarProduto('${produto.nome}')">
+                <i class="fab fa-whatsapp"></i> Consultar pelo WhatsApp
+            </button>
+        `;
+
     // Remove inline styles from close button and move to CSS
     modal.innerHTML = `
         <div class="container">
             <button class="close-product-modal" onclick="fecharDetalhes()">&times;</button>
             <div class="modal-container">
                 <div class="modal-gallery">
-                    <img src="${produto.imagens[0]}" class="main-img" id="mainModalImg">
+                    <img src="${produto.imagens[0]}" alt="${produto.nome}" class="main-img" id="mainModalImg">
                     <div class="thumb-grid" style="${produto.imagens.length <= 1 ? 'display:none' : ''}">
-                        ${produto.imagens.map((img, index) => `<img src="${img}" class="thumb-img ${index === 0 ? 'active' : ''}" onclick="selectThumbnail(this, '${img}')">`).join('')}
+                        ${produto.imagens.map((img, index) => `<img src="${img}" alt="${produto.nome} - foto ${index + 1}" class="thumb-img ${index === 0 ? 'active' : ''}" onclick="selectThumbnail(this, '${img}')">`).join('')}
                     </div>
                 </div>
                 <div class="modal-info">
                     <h2>${produto.nome}</h2>
-                    <div class="modal-price">${montarPrecoMarkup(produto.preco)}</div>
+                    <div class="modal-price ${temPreco ? '' : 'is-pending'}">${precoMarkup}</div>
                     <div class="modal-color"><strong>Cor:</strong> ${produto.cor}</div>
                     <div class="modal-description">${produto.descricao}</div>
                     
@@ -107,12 +151,7 @@ function abrirPaginaProduto(id) {
                         </ul>
                     </div>
                     <div class="modal-actions">
-                        <div class="quantity-selector">
-                            <button class="qty-btn" onclick="updateModalQuantity(-1)">-</button>
-                            <span id="modalQuantity">1</span>
-                            <button class="qty-btn" onclick="updateModalQuantity(1)">+</button>
-                        </div>
-                        <button class="btn btn-primary full-width" onclick="adicionarAoCarrinho('${produto.nome}', ${produto.preco}, parseInt(document.getElementById('modalQuantity').textContent)); fecharDetalhes();">Adicionar ao Carrinho</button>
+                        ${acoesMarkup}
                     </div>
                 </div>
             </div>
@@ -123,6 +162,11 @@ function abrirPaginaProduto(id) {
 
     // Initialize quantity for the modal
     modal.dataset.currentQuantity = 1;
+}
+
+function consultarProduto(nome) {
+    const mensagem = encodeURIComponent(`Olá! Gostaria de saber o preço e a disponibilidade da ${nome}.`);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${mensagem}`, '_blank');
 }
 
 function updateModalQuantity(change) {

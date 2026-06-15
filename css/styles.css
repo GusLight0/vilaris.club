@@ -896,6 +896,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--white);
 }
 
+.badge.armacao {
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--primary);
+    border: 1px solid rgba(0, 26, 51, 0.12);
+}
+
 .produto-card {
     cursor: pointer;
     transition: var(--transition);
@@ -1047,6 +1053,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .preco-valor {
     font-variant-numeric: lining-nums tabular-nums;
+}
+
+.preco-pendente {
+    font-family: 'Segoe UI', Trebuchet MS, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .badge-entrega {
@@ -1274,6 +1289,22 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     color: var(--primary);
     line-height: 0.95;
+}
+
+.modal-price.is-pending {
+    font-family: 'Segoe UI', Trebuchet MS, sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.modal-price-note {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
 }
 
 .modal-color {
@@ -2404,6 +2435,10 @@ h1, h2, h3, h4, h5, h6 {
 
     .btn-add-cart i::before {
         content: "\f067"; /* Troca o ícone de sacola pelo ícone de "+" */
+    }
+
+    .btn-view-details i::before {
+        content: "\f06e";
     }
 
     .filtros {
