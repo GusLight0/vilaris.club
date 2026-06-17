@@ -41,7 +41,7 @@ const PRODUTOS_DB = {
         cor: 'Preto',
         descricao: 'Modelo preto com lente escura e presença noturna sofisticada. A silhueta levemente oval entrega um acabamento urbano, minimalista e elegante para quem prefere um visual discreto e marcante.',
         especificacoes: ['Proteção UV400', 'Lentes escuras', 'Armação preta', 'Design oval minimalista', 'Detalhe lateral discreto'],
-        imagens: ['./assets/images/insta-3.jpg']
+        imagens: ['./assets/images/insta-3-1.jpeg', './assets/images/insta-3.jpg']
     },
     'produto-3': {
         nome: 'Óculos Yellow Sunset',
@@ -49,7 +49,7 @@ const PRODUTOS_DB = {
         cor: 'Preto & Amarelo',
         descricao: 'Armação preta com lentes amarelas translúcidas, feita para um visual solar e descontraído. É uma peça leve, moderna e perfeita para destacar looks claros, praia e fim de tarde.',
         especificacoes: ['Proteção UV400', 'Lentes amarelas', 'Armação preta', 'Formato redondo leve', 'Visual sunset'],
-        imagens: ['./assets/images/insta-6.jpg']
+        imagens: ['./assets/images/insta-6-1.jpeg', './assets/images/insta-6.jpg']
     },
     'produto-4': {
         nome: 'Óculos Breeze',
@@ -101,7 +101,7 @@ const PRODUTOS_DB = {
     },
     'produto-10': {
         nome: 'Boné Velaris Club',
-        preco: 99,
+        preco: 99.99,
         cor: 'Areia',
         descricao: 'Boné Velaris Club em tom areia, com bordado frontal azul e acabamento washed. Um acessório leve e marcante para fechar o visual beach club com presença limpa e premium.',
         especificacoes: ['Bordado frontal Velaris Club', 'Tom areia', 'Aba curva', 'Acabamento washed', 'Visual casual premium'],
