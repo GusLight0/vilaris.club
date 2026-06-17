@@ -426,6 +426,7 @@ function abrirCarrinho() {
     const cartModal = document.getElementById('cartModal');
     if (cartModal) {
         cartModal.classList.add('active');
+        document.body.classList.add('cart-open');
     }
 }
 
@@ -433,6 +434,7 @@ function fecharCarrinho() {
     const cartModal = document.getElementById('cartModal');
     if (cartModal) {
         cartModal.classList.remove('active');
+        document.body.classList.remove('cart-open');
     }
 }
 
