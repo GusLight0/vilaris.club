@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>V e l a r i s</title>
-    <link rel="shortcut icon" href="./assets/icons/logo-site-circle.png" type="image/x-icon">
+    <link rel="icon" href="./assets/icons/new-logo-website.png" type="image/jpeg">
     <link rel="preload" href="./assets/videos/hero-background.mp4" as="video" type="video/mp4">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,7 +12,7 @@
 <body class="is-loading">
     <div id="siteLoader" class="site-loader" role="status" aria-live="polite" aria-label="Carregando Velaris">
         <div class="site-loader-inner">
-            <img src="./assets/icons/logo-site-circle.png" alt="Velaris" class="site-loader-logo">
+            <img src="./assets/icons/new-logo.jpeg" alt="Velaris" class="site-loader-logo">
             <div class="site-loader-brand">VELARIS CLUB</div>
             <div class="site-loader-progress">
                 <div class="site-loader-line" role="progressbar" aria-label="Carregamento" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -37,7 +37,7 @@
         <div class="nav-container">
             <div class="alinhamento">
                 <div class="logo">
-                    <img src="./assets/icons/logo-site-circle.png" alt="Logo da Velaris" width="64">
+                    <img src="./assets/icons/new-logo.jpeg" alt="Logo da Velaris" width="64">
                 </div>
                 <div class="mobile-nav-actions">
                     <a href="#cartModal" class="nav-link cart-icon mobile-cart-icon" aria-label="Abrir carrinho">
@@ -105,6 +105,7 @@
                     <button class="filtro-btn" data-filtro="destaque">Destaque</button>
                     <button class="filtro-btn" data-filtro="promocao">Promoção</button>
                     <button class="filtro-btn" data-filtro="armacao">Armações</button>
+                    <button class="filtro-btn" data-filtro="acessorio">Acessórios</button>
                 </div>
             </div>
 
@@ -115,8 +116,8 @@
                         <img src="./assets/images/insta-7-1.jpeg" alt="Óculos Sunset Safari">
                         <span class="badge destaque">Destaque</span>
                         <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Sunset Safari', 79.99)">
-                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Óculos Sunset Safari ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Sunset Safari', 79.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -126,6 +127,7 @@
                             <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">79,99</span></span>
                             <span class="badge-entrega">Pronta Entrega</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-1')">Ver produto</button>
                     </div>
                 </div>
 
@@ -135,8 +137,8 @@
                         <img src="./assets/images/insta-3.jpg" alt="Óculos Midnight">
                         <span class="badge destaque">Destaque</span>
                         <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Midnight', 79.99)">
-                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Óculos Midnight ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Midnight', 79.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -146,6 +148,7 @@
                             <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">79,99</span></span>
                             <span class="badge-entrega">Pronta Entrega</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-2')">Ver produto</button>
                     </div>
                 </div>
 
@@ -154,8 +157,8 @@
                     <div class="produto-image">
                         <img src="./assets/images/insta-6.jpg" alt="Óculos Yellow Sunset">
                         <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Yellow Sunset', 69.99)">
-                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Óculos Yellow Sunset ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Yellow Sunset', 69.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -165,6 +168,7 @@
                             <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">69,99</span></span>
                             <span class="badge-entrega">Pronta Entrega</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-3')">Ver produto</button>
                     </div>
                 </div>
 
@@ -173,8 +177,8 @@
                     <div class="produto-image">
                         <img src="./assets/images/insta-5-1.jpeg" alt="Óculos Breeze">
                         <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Breeze', 74.99)">
-                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Óculos Breeze ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Breeze', 74.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -184,6 +188,7 @@
                             <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">74,99</span></span>
                             <span class="badge-entrega">Pronta Entrega</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-4')">Ver produto</button>
                     </div>
                 </div>
 
@@ -192,8 +197,8 @@
                     <div class="produto-image">
                         <img src="./assets/images/insta-4-1.jpeg" alt="Óculos Crystal Blue">
                         <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Blue', 79.99)">
-                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Óculos Crystal Blue ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Blue', 79.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -203,6 +208,7 @@
                             <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">79,99</span></span>
                             <span class="badge-entrega">Pronta Entrega</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-5')">Ver produto</button>
                     </div>
                 </div>
 
@@ -212,8 +218,8 @@
                         <img src="./assets/images/insta-8-1.jpeg" alt="Óculos Crystal Grey">
                         <span class="badge destaque">Destaque</span>
                         <div class="produto-hover">
-                            <button class="btn-add-cart" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Grey', 74.99)">
-                                <i class="fas fa-shopping-bag"></i> <span>Adicionar</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Óculos Crystal Grey ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Crystal Grey', 74.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -223,6 +229,7 @@
                             <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">74,99</span></span>
                             <span class="badge-entrega">Pronta Entrega</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-6')">Ver produto</button>
                     </div>
                 </div>
 
@@ -232,17 +239,18 @@
                         <img src="./assets/images/armacao-1.jpeg" alt="Armação Preta">
                         <span class="badge armacao">Armação</span>
                         <div class="produto-hover">
-                            <button class="btn-add-cart btn-view-details" onclick="event.stopPropagation(); abrirPaginaProduto('produto-7')">
-                                <i class="fas fa-eye"></i> <span>Ver detalhes</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Armação Preta ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Armação Preta', 69.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
                     <div class="produto-info">
                         <h3>Armação Preta</h3>
                         <div class="produto-footer">
-                            <span class="preco preco-pendente">Preço em breve</span>
+                            <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">69,99</span></span>
                             <span class="badge-entrega">Nova</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-7')">Ver produto</button>
                     </div>
                 </div>
 
@@ -252,17 +260,18 @@
                         <img src="./assets/images/armacao-2.jpeg" alt="Armação Sunset Safari">
                         <span class="badge armacao">Armação</span>
                         <div class="produto-hover">
-                            <button class="btn-add-cart btn-view-details" onclick="event.stopPropagation(); abrirPaginaProduto('produto-8')">
-                                <i class="fas fa-eye"></i> <span>Ver detalhes</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Armação Sunset Safari ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Armação Sunset Safari', 69.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
                     <div class="produto-info">
                         <h3>Armação Sunset Safari</h3>
                         <div class="produto-footer">
-                            <span class="preco preco-pendente">Preço em breve</span>
+                            <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">69,99</span></span>
                             <span class="badge-entrega">Nova</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-8')">Ver produto</button>
                     </div>
                 </div>
 
@@ -272,17 +281,39 @@
                         <img src="./assets/images/armacao-3.jpeg" alt="Armação Feminina">
                         <span class="badge armacao">Armação</span>
                         <div class="produto-hover">
-                            <button class="btn-add-cart btn-view-details" onclick="event.stopPropagation(); abrirPaginaProduto('produto-9')">
-                                <i class="fas fa-eye"></i> <span>Ver detalhes</span>
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Armação Feminina ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Armação Feminina', 69.99)">
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
                     <div class="produto-info">
                         <h3>Armação Feminina</h3>
                         <div class="produto-footer">
-                            <span class="preco preco-pendente">Preço em breve</span>
+                            <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">69,99</span></span>
                             <span class="badge-entrega">Nova</span>
                         </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-9')">Ver produto</button>
+                    </div>
+                </div>
+
+                <!-- Produto 10 -->
+                <div class="produto-card" data-filtro="destaque acessorio" onclick="abrirPaginaProduto('produto-10')">
+                    <div class="produto-image">
+                        <img src="./assets/images/boné-velaris.jpeg" alt="Boné Velaris Club">
+                        <span class="badge acessorio">Novo</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Boné Velaris Club ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Boné Velaris Club', 99)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Boné Velaris Club</h3>
+                        <div class="produto-footer">
+                            <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">99,00</span></span>
+                            <span class="badge-entrega">Nova</span>
+                        </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-10')">Ver produto</button>
                     </div>
                 </div>
 
@@ -399,8 +430,8 @@
                     </div>
                 </div>
 
-                <div class="lifestyle-item">
-                    <img src="./assets/icons/logo-site.JPG" alt="Logo da nossa marca">
+                <div class="lifestyle-item lifestyle-logo-item">
+                    <img src="./assets/icons/new-logo.jpeg" alt="Logo da nossa marca">
                     <div class="lifestyle-text">
                         <h3>Nossa Empresa</h3>
                         <p>Evolução constante</p>

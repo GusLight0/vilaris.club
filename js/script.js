@@ -77,7 +77,7 @@ const PRODUTOS_DB = {
     },
     'produto-7': {
         nome: 'Armação Preta',
-        preco: null,
+        preco: 69.99,
         cor: 'Preto',
         descricao: 'Armação preta de formato arredondado, com visual clássico e versátil para o dia a dia. O acabamento discreto combina facilmente com diferentes estilos e tipos de lente.',
         especificacoes: ['Armação para lentes de grau', 'Cor preta', 'Formato arredondado', 'Design unissex', 'Lentes não inclusas'],
@@ -85,7 +85,7 @@ const PRODUTOS_DB = {
     },
     'produto-8': {
         nome: 'Armação Sunset Safari',
-        preco: null,
+        preco: 69.99,
         cor: 'Tartaruga',
         descricao: 'Armação tartaruga com tons quentes inspirados no Sunset Safari. O desenho arredondado une personalidade, elegância e uma estética natural.',
         especificacoes: ['Armação para lentes de grau', 'Estampa tartaruga', 'Formato arredondado', 'Tons quentes', 'Lentes não inclusas'],
@@ -93,11 +93,19 @@ const PRODUTOS_DB = {
     },
     'produto-9': {
         nome: 'Armação Feminina',
-        preco: null,
+        preco: 69.99,
         cor: 'Tartaruga',
         descricao: 'Armação feminina tartaruga com formato oval delicado e elegante. Uma opção leve e sofisticada para compor produções clássicas ou modernas.',
         especificacoes: ['Armação para lentes de grau', 'Estampa tartaruga', 'Formato oval', 'Design feminino', 'Lentes não inclusas'],
         imagens: ['./assets/images/armacao-3.jpeg']
+    },
+    'produto-10': {
+        nome: 'Boné Velaris Club',
+        preco: 99,
+        cor: 'Areia',
+        descricao: 'Boné Velaris Club em tom areia, com bordado frontal azul e acabamento washed. Um acessório leve e marcante para fechar o visual beach club com presença limpa e premium.',
+        especificacoes: ['Bordado frontal Velaris Club', 'Tom areia', 'Aba curva', 'Acabamento washed', 'Visual casual premium'],
+        imagens: ['./assets/images/boné-velaris.jpeg']
     },
 };
 
