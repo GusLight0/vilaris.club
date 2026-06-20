@@ -29,7 +29,7 @@ function montarPrecoMarkup(preco) {
 const PRODUTOS_DB = {
     'produto-1': {
         nome: 'Óculos Sunset Safari',
-        preco: 79.99,
+        preco: 79.90,
         cor: 'Tartaruga / Tartoise',
         descricao: 'Armação tartaruga com lentes verde oliva, trazendo um visual resort clássico e leve. O formato arredondado valoriza o rosto sem pesar e combina bem com produções de praia, linho e tons naturais.',
         especificacoes: ['Proteção UV400', 'Lentes verde oliva', 'Armação tartaruga', 'Formato arredondado', 'Detalhe metálico lateral'],
@@ -37,7 +37,7 @@ const PRODUTOS_DB = {
     },
     'produto-2': {
         nome: 'Óculos Midnight',
-        preco: 79.99,
+        preco: 79.90,
         cor: 'Preto',
         descricao: 'Modelo preto com lente escura e presença noturna sofisticada. A silhueta levemente oval entrega um acabamento urbano, minimalista e elegante para quem prefere um visual discreto e marcante.',
         especificacoes: ['Proteção UV400', 'Lentes escuras', 'Armação preta', 'Design oval minimalista', 'Detalhe lateral discreto'],
@@ -45,7 +45,7 @@ const PRODUTOS_DB = {
     },
     'produto-3': {
         nome: 'Óculos Yellow Sunset',
-        preco: 69.99,
+        preco: 69.90,
         cor: 'Preto & Amarelo',
         descricao: 'Armação preta com lentes amarelas translúcidas, feita para um visual solar e descontraído. É uma peça leve, moderna e perfeita para destacar looks claros, praia e fim de tarde.',
         especificacoes: ['Proteção UV400', 'Lentes amarelas', 'Armação preta', 'Formato redondo leve', 'Visual sunset'],
@@ -53,7 +53,7 @@ const PRODUTOS_DB = {
     },
     'produto-4': {
         nome: 'Óculos Breeze',
-        preco: 74.99,
+        preco: 74.90,
         cor: 'Preto & Marrom',
         descricao: 'O Breeze combina armação preta com lentes marrons, criando uma leitura quente e elegante. O desenho arredondado tem aparência leve e casual, ideal para uso diário com estética praiana sofisticada.',
         especificacoes: ['Proteção UV400', 'Lentes marrons', 'Armação preta', 'Formato redondo', 'Acabamento leve para o dia a dia'],
@@ -61,7 +61,7 @@ const PRODUTOS_DB = {
     },
     'produto-5': {
         nome: 'Óculos Crystal Blue',
-        preco: 79.99,
+        preco: 79.90,
         cor: 'Preto & Ciano',
         descricao: 'Modelo com armação preta e lentes azul ciano translúcidas, trazendo frescor visual e uma pegada beach club. A lente clara cria um efeito cristalino, moderno e fácil de combinar com tons neutros.',
         especificacoes: ['Proteção UV400', 'Lentes ciano translúcidas', 'Armação preta', 'Visual crystal', 'Detalhe metálico lateral'],
@@ -69,7 +69,7 @@ const PRODUTOS_DB = {
     },
     'produto-6': {
         nome: 'Óculos Crystal Grey',
-        preco: 74.99,
+        preco: 74.90,
         cor: 'Preto & Cinza',
         descricao: 'Armação cinza translúcida com lentes fumê, equilibrando modernidade e discrição. O acabamento cristalizado deixa o modelo elegante, versátil e com presença premium sem exagero.',
         especificacoes: ['Proteção UV400', 'Lentes cinza fumê', 'Armação cinza translúcida', 'Formato arredondado', 'Detalhes dourados laterais'],
@@ -77,7 +77,7 @@ const PRODUTOS_DB = {
     },
     'produto-7': {
         nome: 'Armação Preta',
-        preco: 69.99,
+        preco: 69.90,
         cor: 'Preto',
         descricao: 'Armação preta de formato arredondado, com visual clássico e versátil para o dia a dia. O acabamento discreto combina facilmente com diferentes estilos e tipos de lente.',
         especificacoes: ['Armação para lentes de grau', 'Cor preta', 'Formato arredondado', 'Design unissex', 'Lentes não inclusas'],
@@ -85,7 +85,7 @@ const PRODUTOS_DB = {
     },
     'produto-8': {
         nome: 'Armação Sunset Safari',
-        preco: 69.99,
+        preco: 69.90,
         cor: 'Tartaruga',
         descricao: 'Armação tartaruga com tons quentes inspirados no Sunset Safari. O desenho arredondado une personalidade, elegância e uma estética natural.',
         especificacoes: ['Armação para lentes de grau', 'Estampa tartaruga', 'Formato arredondado', 'Tons quentes', 'Lentes não inclusas'],
@@ -93,7 +93,7 @@ const PRODUTOS_DB = {
     },
     'produto-9': {
         nome: 'Armação Feminina',
-        preco: 69.99,
+        preco: 69.90,
         cor: 'Tartaruga',
         descricao: 'Armação feminina tartaruga com formato oval delicado e elegante. Uma opção leve e sofisticada para compor produções clássicas ou modernas.',
         especificacoes: ['Armação para lentes de grau', 'Estampa tartaruga', 'Formato oval', 'Design feminino', 'Lentes não inclusas'],
@@ -101,7 +101,7 @@ const PRODUTOS_DB = {
     },
     'produto-10': {
         nome: 'Boné Velaris Club',
-        preco: 99.99,
+        preco: 99.90,
         cor: 'Areia',
         descricao: 'Boné Velaris Club em tom areia, com bordado frontal azul e acabamento washed. Um acessório leve e marcante para fechar o visual beach club com presença limpa e premium.',
         especificacoes: ['Bordado frontal Velaris Club', 'Tom areia', 'Aba curva', 'Acabamento washed', 'Visual casual premium'],
