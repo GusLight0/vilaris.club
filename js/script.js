@@ -101,7 +101,7 @@ const PRODUTOS_DB = {
     },
     'produto-10': {
         nome: 'Boné Velaris Club',
-        preco: 99.90,
+        preco: 89.90,
         cor: 'Areia',
         descricao: 'Boné Velaris Club em tom areia, com bordado frontal azul e acabamento washed. Um acessório leve e marcante para fechar o visual beach club com presença limpa e premium.',
         especificacoes: ['Bordado frontal Velaris Club', 'Tom areia', 'Aba curva', 'Acabamento washed', 'Visual casual premium'],
