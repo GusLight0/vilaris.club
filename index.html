@@ -317,6 +317,27 @@
                     </div>
                 </div>
 
+                <!-- Produto 11 -->
+                <div class="produto-card" data-filtro="destaque" onclick="abrirPaginaProduto('produto-11')">
+                    <div class="produto-image">
+                        <img src="./assets/images/produto-9.jpeg" alt="Óculos Moonlight">
+                        <span class="badge destaque">Destaque</span>
+                        <div class="produto-hover">
+                            <button class="btn-add-cart" type="button" aria-label="Adicionar Óculos Moonlight ao carrinho" title="Adicionar ao carrinho" onclick="event.stopPropagation(); adicionarAoCarrinho('Óculos Moonlight', 79.90)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Óculos Moonlight</h3>
+                        <div class="produto-footer">
+                            <span class="preco"><span class="preco-moeda">R$</span><span class="preco-valor">79,90</span></span>
+                            <span class="badge-entrega">Nova</span>
+                        </div>
+                        <button class="btn-view-product" type="button" onclick="event.stopPropagation(); abrirPaginaProduto('produto-11')">Ver produto</button>
+                    </div>
+                </div>
+
                 <!-- Mensagem de busca vazia -->
                 <div id="noResults" class="no-results hidden">
                     <i class="fas fa-search"></i>

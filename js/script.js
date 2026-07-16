@@ -107,6 +107,14 @@ const PRODUTOS_DB = {
         especificacoes: ['Bordado frontal Velaris Club', 'Tom areia', 'Aba curva', 'Acabamento washed', 'Visual casual premium'],
         imagens: ['./assets/images/boné-velaris.jpeg']
     },
+    'produto-11': {
+        nome: 'Óculos Moonlight',
+        preco: 79.90,
+        cor: 'Preto',
+        descricao: 'Modelo preto com lente escura e presença noturna sofisticada. Um visual urbano e minimalista, perfeito para quem busca um acessório versátil e marcante em qualquer produção.',
+        especificacoes: ['Proteção UV400', 'Lentes escuras', 'Armação preta', 'Formato moderno', 'Visual casual premium'],
+        imagens: ['./assets/images/produto-9.jpeg']
+    },
 };
 
 // Modal de Produto
